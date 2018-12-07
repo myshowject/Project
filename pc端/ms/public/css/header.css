@@ -214,7 +214,7 @@ background: #ff0;
   height: 226px;
   bottom: -36px;
   right: -32px;
-  background: url(../img/bg1.png)  right bottom no-repeat;
+  background: url(../img/header/n-bg1.png)  right bottom no-repeat;
   background-position: center center;
   background-size: 382px;
 }
@@ -224,7 +224,7 @@ background: #ff0;
   height: 226px;
   bottom: -26px;
   right: -104px;
-  background: url(../img/bg2.png)  right bottom no-repeat;
+  background: url(../img/header/n-bg2.png)  right bottom no-repeat;
   background-position: center center;
   background-size: 330px;
 }
