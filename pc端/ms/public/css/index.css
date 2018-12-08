@@ -490,9 +490,260 @@ input.submit{
 **
 轮播
  */
+ .index_round{
+   position: relative;
+   width: 990px;
+   height: 804px;
+   margin: 0px auto;
+   background: url(../img/section/round/blank.gif) 0px 0px repeat;
+ }
+ .index_round_left{
+   position: absolute;
+   left: -130px;
+   top: 396px;
+   height: 130px;
+   width: 130px;
+   background: url(../img/section/round/round_rrow.gif) 0px 0px no-repeat;
+   z-index: 500;
+   cursor: pointer;
+ }
+ .index_round_left:hover{
+  background-position: -130px 0px;
+ }
+ .index_round_right{
+   position: absolute;
+   right: -130px;
+   top: 396px;
+   height: 130px;
+   width: 130px;
+   background: url(../img/section/round/round_rrow.gif) 0px -130px no-repeat;
+   z-index: 500;
+   cursor: pointer;
+ }
+ .index_round_right:hover{
+   background-position: -130px -130px;
+ }
+ .shuffling{
+   position: relative;
+   width: 988px;
+   height: 804px;
+   margin: 0 auto;
+   overflow: hidden;
+   background: url(../img/section/round/blank.gif) 0px 0px repeat;
+ }
+ .shuffling_none{
+  width: 988px;
+  height: 804px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: absolute;
+ }
+ .shuffling_item1{
+   left: -998px;
+ }
+ .shuffling_item2{
+   left: 0px;
+ }
+ .round{
+   position: relative;
+   width: 988px;
+   height: 704px;
+   display: flex;
+   justify-content: space-between;
+   flex-wrap: wrap;
+ }
+ .round_class{
+  width:232px;
+  height: 332px;
+  background: #fff; 
+  position: relative;
+ }
+ .shuffling span.shuffling_span a.red{
+   color: #ff3232;
+ }
+.shuffling span.shuffling_span{
+  height: 48px;
+  line-height: 48px;
+  color: #666;
+  font-size: 12px;
+  font-family: 宋体;
+  display: block;
+  position: absolute;
+  top: 36px;
+  right: 0px;
+  z-index: 1;
+}
+.shuffling span.shuffling_span a{
+  color: #666;
+}
+.shuffling span.shuffling_span a:hover{
+  color: #ff3232;
+  text-decoration: underline;
+}
+/* 轮播每个小块 */
+.big{
+  display: block;
+  width: 232px;
+  height: 332px;
+  font-size: 12px;
+}
+.big .img{
+  display: block;
+  width: 232px;
+  height: 232px;
+}
+.r_c_w{
+  width: 232px;
+  height: 100px;
+  overflow: hidden;
+  vertical-align: baseline;
+}
+.i{
+  width: 232px;
+  height: 200px;
+  margin-top: 0px;
+}
+.big:hover .r_c_w .i{
+  transition: 1s;
+  margin-top:-100px;
+}
+.c1{
+  width: 232px;
+  height: 100px;
+  overflow: hidden;
+}
+.c1 strong{
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  padding: 11px 14px 0px;
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.c1 span{
+  display: block;
+  height: 26px;
+  line-height: 26px;
+  padding: 0px 14px 0px;
+  font-size: 12px;
+  color: #999;
+}
+.c1 em{
+  display: block;
+  height: 23px;
+  line-height: 23px;
+  padding: 0px 14px 0px;
+  font-size: 12px;
+  color: #ff3232;
+  font-style: normal;
+  font-weight: normal;
+}
+.c2{
+  width: 232px;
+  height: 100px;
+  overflow: hidden;
+  background: #eee;
+}
+.c2 ul{
+  padding: 20px 0px 15px 14px;
+  list-style: none;
+}
+.c2 ul li{
+  width: 208px;
+  height: 32px;
+  background: url(../img/section/round/list_style1_icons.png) no-repeat;
+  text-indent: 32px;
+  line-height: 32px;
+  color: #666;
+  font-size: 14px;
+}
+.c2 ul li.li1{
+  background-position: -9px -126px;
+}
+.c2 ul li.li2{
+  background-position: -9px -44px;
+}
+
+.round_list_more{
+  background: #fff;
+  height: 332px;
+}
+.round_list_more h3{
+  height: 50px;
+  line-height: 50px;
+  color: #333;
+  font-size: 14px;
+  text-indent: 14px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  font-weight: normal;
+}
+.round_list_more ul{
+  list-style: none;
+  padding: 14px;
+  font-size: 12px;
+}
+.round_list_more ul li{
+  display: inline-block;
+  vertical-align: top;
+  height: 30px;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.round_list_more ul li a{
+  color: #666;
+  display: inline-block;
+  vertical-align: top;
+  padding: 0px 10px;
+  background: #fcfcfc;
+  border: 1px solid #ddd;
+  height: 28px;
+  line-height: 28px;
+}
+.round_list_more ul li a:hover{
+  background: #ff3232;
+  color: #fff;
+  border: 1px solid #e90808;
+}
+.round_list_more ul li a.host{
+  background: #ff3232;
+  color: #fff;
+  border: 1px solid #e90808;
+}
+.round_list_more ul li a.host:hover{
+  background: #e90808;
+}
+/* 小标签 */
+.xb{
+  display: inline-block;
+  vertical-align: top;
+  height: 38px;
+  position:absolute;
+  top:12px;
+  right: -6px;
+  background: url(../img/section/round/gxarrow.png) right 32px no-repeat;
+  font-style: normal;
+  font-weight: normal;
+}
+.xb span{
+  display: inline-block;
+  vertical-align: top;
+  height: 32px ;
+  padding: 0px 12px ;
+  background: #60a531;
+  line-height: 32px;
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
+}
 
  /* 健康咨询 */
- .health_div{
+ .index_health{
    width: 990px;
    font-size: 12px;
  }
@@ -511,9 +762,15 @@ input.submit{
  .mb-20{
    margin-bottom: 20px;
  }
+ .mr-0{
+   margin-right: 0px;
+ }
+ .mb-0{
+   margin-bottom: 0px;
+ }
  .health_div_a h2{
    height: 30px;
-   line-height: 30px;
+   line-height: 27px;
    display: inline-block;
    padding: 0px 14px;
    color: #fff;
@@ -525,33 +782,47 @@ input.submit{
    z-index: 100;
  }
  .health_div_a h2 a{
+   font-size: 12px;
    color: #fff;
  }
- .health_item{
-   padding-left: 160px;
+ .health_div_a h2 b{
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  top: 0px;
+  right: -6px;
+  display: block;
+  overflow: hidden;
+  background: url(../img/bg_b.png) 0px 0px no-repeat;
+ }
+ /* ul部分 */
+ .health_div_a ul{
    position: relative;
+   padding-left: 160px;
  }
  .item_height{
    height: 59px;
  }
  .health_item li{
+   font-size: 12px;
+   height: 49px;
    border-bottom: 1px solid #eee;
  }
 
  .health_div_a ul li a.imgs{
-    height: 160px;
     width: 160px;
+    height: 160px;
+    position: absolute;
     left: 0px;
     top: 0px;
     display: none;
-    position: absolute;
  }
  .health_div_a ul li.item_height a.imgs{
    display: block;
  }
  .health_div_a ul li a.imgs img{
   display: block;
-  height: 160px;
+  height: 150px;
   width: 160px;
  }
  .health_div_a ul li.item_height h3{
@@ -561,7 +832,6 @@ input.submit{
   color: #333;
   font-family: Microsoft Yahei;
   font-weight: bold;
-  padding-left: 14px;
  }
  .health_div_a ul li h3{
   height: 49px;
@@ -570,9 +840,14 @@ input.submit{
   color: #333;
   padding-left: 14px;
 }
- .health_div_a ul li a{
-   color: #333;
-   font-size: 16px;
+ .health_div_a ul li h3 a{
+   color: #666;
  }
-
+ .health_div_a ul li.item_height h3 a{
+   color: #333;
+ }
+.health_div_a ul li h3 a:hover{
+  color: #ff3232;
+  text-decoration: underline;
+}
  
