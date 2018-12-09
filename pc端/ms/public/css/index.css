@@ -95,7 +95,7 @@ input.submit{
   margin-top: 120px;
 }
 .index_w_main{
-  width: 100%;
+  width: 1980px;
   position: absolute;
   height: 330px;
   left: 0px;
@@ -107,19 +107,19 @@ input.submit{
   position: absolute;
 }
 .z_item_1{
- left: 0;
+ left: 0px;
 }
 .z_item_2{
- left: 990px; 
+ left:990px; 
 }
 .z_item_3{
- left: 1980px; 
+ left:1980px; 
 }
 .z_item_4{
- left: -1980px; 
+ left: 2970px; 
 }
 .z_item_5{
- left: -990px; 
+ left:-990px; 
 }
 .display{
   height: 120px;
@@ -539,10 +539,16 @@ input.submit{
   position: absolute;
  }
  .shuffling_item1{
-   left: -998px;
+   left: 0px;
  }
  .shuffling_item2{
-   left: 0px;
+   left: 988px;
+ }
+ .shuffling_item3{
+   left: 1976px;
+ }
+ .shuffling_item4{
+   left: -988px;
  }
  .round{
    position: relative;
@@ -784,6 +790,9 @@ input.submit{
  .health_div_a h2 a{
    font-size: 12px;
    color: #fff;
+ }
+ .health_div_a h2 a:hover{
+   text-decoration: underline;
  }
  .health_div_a h2 b{
   width: 6px;

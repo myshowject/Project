@@ -124,7 +124,7 @@ a{
   border-bottom: 4px solid #ff3232;
 }
 .main_nav>li:hover{
-background: #ff0;
+background: #fafafa;
 }
 .main_nav>li:nth-child(2),.main_nav>li:nth-child(3){
   width: 112px;
@@ -136,15 +136,16 @@ background: #ff0;
 
 .nav_first,.nav_last{
   display: none;
-  width: 980px;
+  width: 990px;
   height: 285px;
-  background: #ff0;
+  background: #fafafa;
   position: relative;
-  left: -95px;
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+  left: -103px;
   top: -24px;
 }
 .nav_last{
-  left: -223px;
+  left: -231px;
 }
 .main_nav>li:nth-child(2):hover .nav_first,.main_nav>li:nth-child(3):hover .nav_last{
   display: block;
