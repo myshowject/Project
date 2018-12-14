@@ -6,7 +6,7 @@ body{
 .main_search{
   width: 100%;
   height: 60px;
-  background: url(../img/black75.png) repeat;
+  background: url(../img/section/black75.png) repeat;
   position: fixed;
   bottom: 0px;
   left: 0px;
@@ -54,7 +54,7 @@ input.submit{
   top: 0px;
   left: 1px;
   text-indent: -9999px;
-  background: url(../img/search_btn.png) 0px 0px no-repeat;
+  background: url(../img/section/to_top/search_btn.png) 0px 0px no-repeat;
   z-index: 600;
 }
 .bottom_back_to_top{
@@ -70,7 +70,7 @@ input.submit{
   width: 48px;
   height: 48px;
   text-indent: -9999px;
-  background: url(../img/backtotop_icon.png) 0px 0px no-repeat;
+  background: url(../img/section/to_top/backtotop_icon.png) 0px 0px no-repeat;
   z-index: 600;
   position: absolute;
   bottom: 0px;
@@ -95,31 +95,35 @@ input.submit{
   margin-top: 120px;
 }
 .index_w_main{
-  width: 1980px;
+  width: 100%;
   position: absolute;
   height: 330px;
   left: 0px;
   
 }
 .w_item{
+  transition: left .5s ;
   width: 990px;
   height: 330px;
   position: absolute;
+  z-index: 10;
 }
 .z_item_1{
  left: 0px;
 }
 .z_item_2{
- left:990px; 
+ left:990px;
 }
 .z_item_3{
- left:1980px; 
+ left:1980px;
+ transition: none ;
 }
 .z_item_4{
- left: 2970px; 
+ left: -1980px;
+ transition: none ;
 }
 .z_item_5{
- left:-990px; 
+ left:-990px;
 }
 .display{
   height: 120px;
@@ -129,7 +133,7 @@ input.submit{
   text-align: center;
   font-family: Microsoft Yahei;
   position: relative;
-  display: block;
+  display: none;
 }
 /* h3 隐藏 */
 .display_h{
@@ -140,7 +144,10 @@ input.submit{
   display: none;
 }
 /* h3 显示 */
-.z_item_dis{
+/* .z_item_dis{
+  display: block;
+} */
+.z_item_1 .display{
   display: block;
 }
 .w_item ul li{
@@ -164,7 +171,7 @@ input.submit{
   width: 330px;
   height: 78px;
   bottom: 0px;
-  background: url(../img/white80.png) repeat;
+  background: url(../img/section/z-item/white80.png) repeat;
 
 }
 .li_div strong{
@@ -211,7 +218,7 @@ input.submit{
   width: 6px;
   height: 6px;
   overflow: hidden;
-  background: url(../img/bg_b.png) 0px 0px no-repeat;
+  background: url(../img/section/bg_b.png) 0px 0px no-repeat;
   position: absolute;
   right: -6px;
   bottom: 24px;
@@ -244,7 +251,7 @@ input.submit{
   position: absolute;
   left: -60px;
   top: 128px;
-  background: url(../img/section/slide_bg.png) no-repeat;
+  background: url(../img/section/z-item/slide_bg.png) no-repeat;
   background-position:0px 6px;
   z-index: 500;
 }
@@ -254,8 +261,9 @@ input.submit{
   position: absolute;
   right: -60px;
   top: 128px;
-  background: url(../img/section/slide_bg.png) no-repeat;
+  background: url(../img/section/z-item/slide_bg.png) no-repeat;
   background-position: -174px 6px;
+  z-index: 500;
 }
 /* 时间条 */
 .time_p{
@@ -271,7 +279,7 @@ input.submit{
   margin: 0px auto;
   position: relative;
   overflow: hidden;
-  background: #fff url(../img/section/time.gif) 0px 0px repeat-x;
+  background: #fff url(../img/section/z-item/time.gif) 0px 0px repeat-x;
 }
 /* 时间间隔+字体+border_top */
 .timex{
@@ -292,12 +300,12 @@ input.submit{
 .time_top_red{
   color: #ff6363;
   border-top: 4px solid #ff6363;
-  background: #f9f9f9 url(../img/section/timex.gif) 0px -4px no-repeat;
+  background: #f9f9f9 url(../img/section/z-item/timex.gif) 0px -4px no-repeat;
   font-weight: bold;
 }
 .time_top_red span{
   display: block;
-}
+}  
 /* 左右时间隐藏 */
 .time_left{
   width: 1000px;
@@ -306,7 +314,7 @@ input.submit{
   top: 0px;
   height: 48px;
   border-top: 4px solid #aaa;
-  background:  #fff url(../img/section/time.gif) right -4px repeat-x;
+  background:  #fff url(../img/section/z-item/time.gif) right -4px repeat-x;
 }
 .time_right{
   width: 1000px;
@@ -315,7 +323,7 @@ input.submit{
   top: 0px;
   height: 48px;
   border-top: 4px solid #aaa;
-  background:  #fff url(../img/section/time.gif) 0px -4px repeat-x;
+  background:  #fff url(../img/section/z-item/time.gif) 0px -4px repeat-x;
 }
 /* span  时间标 */
 .time{
@@ -537,18 +545,21 @@ input.submit{
   margin: 0 auto;
   overflow: hidden;
   position: absolute;
+  transition: left .5s;
  }
  .shuffling_item1{
    left: 0px;
  }
  .shuffling_item2{
-   left: 988px;
+   left: 988px;  
  }
  .shuffling_item3{
    left: 1976px;
+   transition:none;
  }
  .shuffling_item4{
-   left: -988px;
+   left: -988px;  
+   transition: .5s;
  }
  .round{
    position: relative;
@@ -802,7 +813,7 @@ input.submit{
   right: -6px;
   display: block;
   overflow: hidden;
-  background: url(../img/bg_b.png) 0px 0px no-repeat;
+  background: url(../img/section/bg_b.png) 0px 0px no-repeat;
  }
  /* ul部分 */
  .health_div_a ul{

@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 // 引入路由模块
 const index = require("./routes/index");
+const header = require("./routes/header");
 
 
 var app = express();
@@ -23,3 +24,4 @@ app.use(express.static("public"));
 // 使用路由器来管理路由
 // http://localhost:8000/index
 app.use('/index',index);
+app.use('/header',header);
