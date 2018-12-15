@@ -9,10 +9,10 @@ window.onload= function(){
     var html =""
     for(var p of res.slice(0,3)){
       // console.log(p);
-      var {headtitle,headline,title,efficacy} = p;
+      var {headtitle,headline,title,efficacy,benefits,md} = p;
        html += `<li>
       <a target="_blank" href="#" title="${title}" class="img">
-        <img src="./img/section/z-item/z-item1-a.jpg" alt="${title}">
+        <img src="${md}" alt="${title}">
       </a>
       <div class="li_div">
         <h2>
@@ -20,7 +20,7 @@ window.onload= function(){
         </h2>
         <strong>${efficacy}</strong>
         <span>
-          <a href="###">增强体质</a>
+          <a href="###">${benefits}</a>
           <b class="bg_b"></b>
         </span>
       </div>
@@ -34,49 +34,433 @@ window.onload= function(){
     var  html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
     var h3 = document.querySelector(".index_w_main>:first-child");
     h3.innerHTML+=html;
-  //   var html = `<li>
-  //   <a target="_blank" href="#" title="${title}" class="img">
-  //     <img src="./img/section/z-item/z-item1-a.jpg" alt="${title}">
-  //   </a>
-  //   <div class="li_div">
-  //     <h2>
-  //       <a target="_blank" href="#" title="${title}">${title}</a>
-  //     </h2>
-  //     <strong>${efficacy}</strong>
-  //     <span>
-  //       <a href="###">增强体质</a>
-  //       <b class="bg_b"></b>
-  //     </span>
-  //   </div>
-  // </li>`
-    // var a = document.querySelector(".index_w_main>:first-child>:nth-child(1)");
-    // a.innerHTML += html;
+
+    var html =""
+    for(var p of res.slice(3,6)){
+      // console.log(p);
+      var {headtitle,headline,title,efficacy,benefits,md} = p;
+       html += `<li>
+      <a target="_blank" href="#" title="${title}" class="img">
+        <img src="${md}" alt="${title}">
+      </a>
+      <div class="li_div">
+        <h2>
+          <a target="_blank" href="#" title="${title}">${title}</a>
+        </h2>
+        <strong>${efficacy}</strong>
+        <span>
+          <a href="###">${benefits}</a>
+          <b class="bg_b"></b>
+        </span>
+      </div>
+    </li>`
+   
+    }
+    var a = document.querySelector(".index_w_main>:nth-child(2)>:nth-child(1)");
+    a.innerHTML += html;
+   
     
-    // var p = res[1];
-    // var {headtitle,headline} = p;
-    // var html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
-    // var h3 = document.querySelector(".index_w_main>:nth-child(2)");
-    // h3.innerHTML+=html;
+    var  html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
+    var h3 = document.querySelector(".index_w_main>:nth-child(2)");
+    h3.innerHTML+=html;
+   
+   
+    var html =""
+    for(var p of res.slice(6,9)){
+      // console.log(p);
+      var {headtitle,headline,title,efficacy,benefits,md} = p;
+       html += `<li>
+      <a target="_blank" href="#" title="${title}" class="img">
+        <img src="${md}" alt="${title}">
+      </a>
+      <div class="li_div">
+        <h2>
+          <a target="_blank" href="#" title="${title}">${title}</a>
+        </h2>
+        <strong>${efficacy}</strong>
+        <span>
+          <a href="###">${benefits}</a>
+          <b class="bg_b"></b>
+        </span>
+      </div>
+    </li>`
+   
+    }
+    var a = document.querySelector(".index_w_main>:nth-child(3)>:nth-child(1)");
+    a.innerHTML += html;
+   
+    
+    var  html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
+    var h3 = document.querySelector(".index_w_main>:nth-child(3)");
+    h3.innerHTML+=html;
 
-    // var p = res[2];
-    // var {headtitle,headline} = p;
-    // var html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
-    // var h3 = document.querySelector(".index_w_main>:nth-child(3)");
-    // h3.innerHTML+=html;
+    var html =""
+    for(var p of res.slice(9,12)){
+      // console.log(p);
+      var {headtitle,headline,title,efficacy,benefits,md} = p;
+       html += `<li>
+      <a target="_blank" href="#" title="${title}" class="img">
+        <img src="${md}" alt="${title}">
+      </a>
+      <div class="li_div">
+        <h2>
+          <a target="_blank" href="#" title="${title}">${title}</a>
+        </h2>
+        <strong>${efficacy}</strong>
+        <span>
+          <a href="###">${benefits}</a>
+          <b class="bg_b"></b>
+        </span>
+      </div>
+    </li>`
+   
+    }
+    var a = document.querySelector(".index_w_main>:nth-child(4)>:nth-child(1)");
+    a.innerHTML += html;
+   
+    
+    var  html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
+    var h3 = document.querySelector(".index_w_main>:nth-child(4)");
+    h3.innerHTML+=html;
 
-    // var p = res[3];
-    // var {headtitle,headline} = p;
-    // var html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
-    // var h3 = document.querySelector(".index_w_main>:nth-child(4)");
-    // h3.innerHTML+=html;
 
-    // var p = res[5];
-    // var {headtitle,headline} = p;
-    // var html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
-    // var h3 = document.querySelector(".index_w_main>:last-child");
-    // h3.innerHTML+=html;
-
+    var html =""
+    for(var p of res.slice(-3)){
+      // console.log(p);
+      var {headtitle,headline,title,efficacy,benefits,md} = p;
+       html += `<li>
+      <a target="_blank" href="#" title="${title}" class="img">
+        <img src="${md}" alt="${title}">
+      </a>
+      <div class="li_div">
+        <h2>
+          <a target="_blank" href="#" title="${title}">${title}</a>
+        </h2>
+        <strong>${efficacy}</strong>
+        <span>
+          <a href="###">${benefits}</a>
+          <b class="bg_b"></b>
+        </span>
+      </div>
+    </li>`
+   
+    }
+    var a = document.querySelector(".index_w_main>:last-child>:nth-child(1)");
+    a.innerHTML += html;
+   
+    
+    var  html =`<h3 class="display display_h ">今日${headtitle}推荐：${headline}</h3> `;
+    var h3 = document.querySelector(".index_w_main>:last-child");
+    h3.innerHTML+=html;
   })
+
+  ajax({
+    url:"http://localhost:8000/index/food",
+    type:"get",
+    dataType:"json"
+  })
+  .then(res=>{
+    // console.log(res);
+    // 水果
+    var html = "";
+    for(var p of res.slice(0,8)){
+      // console.log(p)
+      var {food_title,pic_title,md} = p;
+      html +=` <li>
+                <a target="_blank" href="javascript:;">
+                  <img src="${md}" alt="" srcset="">
+                  <span class="food_name">
+                    <b class="bg_b1"></b>
+                    <strong>${pic_title}</strong>
+                  </span>
+                </a>
+               </li>`
+    }
+    var ul = document.querySelector(".food_w>:first-child>.a_div>ul.h");
+    ul.innerHTML +=html;
+    var html =`  <a href="javascript:;" class="food_c_a">${food_title}</a>`
+    var li = document.querySelector(".food_w>:first-child");
+    li.innerHTML +=html;
+    
+  // 蔬菜
+    var html = "";
+    for(var p of res.slice(8,16)){
+      var {food_title,pic_title,md} = p;
+      html +=` 
+      <li>
+        <a target="_blank" href="javascript:;">
+          <img src="${md}" alt="" srcset="">
+          <span class="food_name">
+            <b class="bg_b1"></b>
+            <strong>${pic_title}</strong>
+          </span>
+        </a>
+      </li>`
+    }
+    var ul = document.querySelector(".food_w>:nth-child(2)>.a_div>ul.h");
+    ul.innerHTML +=html;
+
+
+    var html =`  <a href="javascript:;" class="food_c_a">${food_title}</a>`
+    var li = document.querySelector(".food_w>:nth-child(2)");
+    li.innerHTML +=html;
+  
+    // 五谷
+    var html = "";
+    for(var p of res.slice(16,24)){
+      var {food_title,pic_title,md} = p;
+      html +=` 
+      <li>
+        <a target="_blank" href="javascript:;">
+          <img src="${md}" alt="" srcset="">
+          <span class="food_name">
+            <b class="bg_b1"></b>
+            <strong>${pic_title}</strong>
+          </span>
+        </a>
+      </li>`
+    }
+    var ul = document.querySelector(".food_w>:nth-child(3)>.a_div>ul.h");
+    ul.innerHTML +=html;
+
+
+    var html =`  <a href="javascript:;" class="food_c_a">${food_title}</a>`
+    var li = document.querySelector(".food_w>:nth-child(3)");
+    li.innerHTML +=html;
+
+    // 生鲜
+    var html = "";
+    for(var p of res.slice(-8)){
+      var {food_title,pic_title,md} = p;
+      html +=` 
+      <li>
+        <a target="_blank" href="javascript:;">
+          <img src="${md}" alt="" srcset="">
+          <span class="food_name">
+            <b class="bg_b1"></b>
+            <strong>${pic_title}</strong>
+          </span>
+        </a>
+      </li>`
+    }
+    var ul = document.querySelector(".food_w>:last-child>.a_div>ul.h");
+    ul.innerHTML +=html;
+
+
+    var html =`  <a href="javascript:;" class="food_c_a">${food_title}</a>`
+    var li = document.querySelector(".food_w>:last-child");
+    li.innerHTML +=html;
+  })
+
+  ajax({
+    url:"http://localhost:8000/index/round",
+    type:"get",
+    dataType:"json"
+  })
+  .then(res=>{
+    // console.log(res);
+    var html = "";
+    for(var p of res.slice(0,7)){
+    console.log(p)
+    var {rname,contents,point,author,steps,practice,pic} = p;
+      html += ` <div class="round_class">
+      <a target="_blank" href="javascript:;" title="${rname}" class="big">
+        <img class="img" src="${pic}" alt="${rname}">
+        <div class="r_c_w">
+          <div class="i">
+            <div class="c1">
+              <strong>${rname}</strong>
+              <span>${contents} 评论  ${point} 人气</span>
+              <em>${author}</em>
+            </div>
+            <div class="c2">
+              <ul>
+                <li class="li1">${steps}</li>
+                <li class="li2">${practice}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>`
+    }
+    html +=` <div class="round_class">
+    <div class="round_list_more">
+      <h3>热门栏目推荐</h3>
+      <ul>
+        <li><a href="javascript:;">最新菜谱</a></li>
+        <li><a href="javascript:;">家常菜</a></li>
+        <li><a href="javascript:;">凉菜</a></li>
+        <li><a href="javascript:;">素食</a></li>
+        <li><a href="javascript:;">早餐</a></li>
+        <li><a href="javascript:;">乌发</a></li>
+        <li><a href="javascript:;">高血压</a></li>
+        <li><a href="javascript:;">烘焙</a></li>
+        <li><a href="javascript:;">川菜</a></li>
+        <li><a href="javascript:;">粤菜</a></li>
+        <li><a href="javascript:;">湘菜</a></li>
+        <li><a href="javascript:;">甜点</a></li>
+        <li><a href="javascript:;" class="host">进入菜谱大全 &gt;&gt;</a></li>
+      </ul>
+    </div>
+  </div> `
+    var div = document.querySelector(".shuffling>:nth-child(2)>:nth-child(2)");
+    console.log(div);
+    div.innerHTML +=html;
+   
+   
+    var html = "";
+    for(var p of res.slice(7,14)){
+    console.log(p)
+    var {rname,contents,point,author,steps,practice,pic} = p;
+      html += ` <div class="round_class">
+      <a target="_blank" href="javascript:;" title="${rname}" class="big">
+        <img class="img" src="${pic}" alt="${rname}">
+        <div class="r_c_w">
+          <div class="i">
+            <div class="c1">
+              <strong>${rname}</strong>
+              <span>${contents} 评论  ${point} 人气</span>
+              <em>${author}</em>
+            </div>
+            <div class="c2">
+              <ul>
+                <li class="li1">${steps}</li>
+                <li class="li2">${practice}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>`
+    }
+    html +=` <div class="round_class">
+    <div class="round_list_more">
+      <h3>热门栏目推荐</h3>
+      <ul>
+        <li><a href="javascript:;">最新菜谱</a></li>
+        <li><a href="javascript:;">家常菜</a></li>
+        <li><a href="javascript:;">凉菜</a></li>
+        <li><a href="javascript:;">素食</a></li>
+        <li><a href="javascript:;">早餐</a></li>
+        <li><a href="javascript:;">乌发</a></li>
+        <li><a href="javascript:;">高血压</a></li>
+        <li><a href="javascript:;">烘焙</a></li>
+        <li><a href="javascript:;">川菜</a></li>
+        <li><a href="javascript:;">粤菜</a></li>
+        <li><a href="javascript:;">湘菜</a></li>
+        <li><a href="javascript:;">甜点</a></li>
+        <li><a href="javascript:;" class="host">进入菜谱大全 &gt;&gt;</a></li>
+      </ul>
+    </div>
+  </div> `
+    var div = document.querySelector(".shuffling>:nth-child(3)>:nth-child(2)");
+    console.log(div);
+    div.innerHTML +=html;
+   
+   
+    var html = "";
+    for(var p of res.slice(14,21)){
+    console.log(p)
+    var {rname,contents,point,author,steps,practice,pic} = p;
+      html += ` <div class="round_class">
+      <a target="_blank" href="javascript:;" title="${rname}" class="big">
+        <img class="img" src="${pic}" alt="${rname}">
+        <div class="r_c_w">
+          <div class="i">
+            <div class="c1">
+              <strong>${rname}</strong>
+              <span>${contents} 评论  ${point} 人气</span>
+              <em>${author}</em>
+            </div>
+            <div class="c2">
+              <ul>
+                <li class="li1">${steps}</li>
+                <li class="li2">${practice}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>`
+    }
+    html +=` <div class="round_class">
+    <div class="round_list_more">
+      <h3>热门栏目推荐</h3>
+      <ul>
+        <li><a href="javascript:;">最新菜谱</a></li>
+        <li><a href="javascript:;">家常菜</a></li>
+        <li><a href="javascript:;">凉菜</a></li>
+        <li><a href="javascript:;">素食</a></li>
+        <li><a href="javascript:;">早餐</a></li>
+        <li><a href="javascript:;">乌发</a></li>
+        <li><a href="javascript:;">高血压</a></li>
+        <li><a href="javascript:;">烘焙</a></li>
+        <li><a href="javascript:;">川菜</a></li>
+        <li><a href="javascript:;">粤菜</a></li>
+        <li><a href="javascript:;">湘菜</a></li>
+        <li><a href="javascript:;">甜点</a></li>
+        <li><a href="javascript:;" class="host">进入菜谱大全 &gt;&gt;</a></li>
+      </ul>
+    </div>
+  </div> `
+    var div = document.querySelector(".shuffling>:nth-child(4)>:nth-child(2)");
+    console.log(div);
+    div.innerHTML +=html;
+  
+  
+    var html = "";
+    for(var p of res.slice(-7)){
+    console.log(p)
+    var {rname,contents,point,author,steps,practice,pic} = p;
+      html += ` <div class="round_class">
+      <a target="_blank" href="javascript:;" title="${rname}" class="big">
+        <img class="img" src="${pic}" alt="${rname}">
+        <div class="r_c_w">
+          <div class="i">
+            <div class="c1">
+              <strong>${rname}</strong>
+              <span>${contents} 评论  ${point} 人气</span>
+              <em>${author}</em>
+            </div>
+            <div class="c2">
+              <ul>
+                <li class="li1">${steps}</li>
+                <li class="li2">${practice}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>`
+    }
+    html +=` <div class="round_class">
+    <div class="round_list_more">
+      <h3>热门栏目推荐</h3>
+      <ul>
+        <li><a href="javascript:;">最新菜谱</a></li>
+        <li><a href="javascript:;">家常菜</a></li>
+        <li><a href="javascript:;">凉菜</a></li>
+        <li><a href="javascript:;">素食</a></li>
+        <li><a href="javascript:;">早餐</a></li>
+        <li><a href="javascript:;">乌发</a></li>
+        <li><a href="javascript:;">高血压</a></li>
+        <li><a href="javascript:;">烘焙</a></li>
+        <li><a href="javascript:;">川菜</a></li>
+        <li><a href="javascript:;">粤菜</a></li>
+        <li><a href="javascript:;">湘菜</a></li>
+        <li><a href="javascript:;">甜点</a></li>
+        <li><a href="javascript:;" class="host">进入菜谱大全 &gt;&gt;</a></li>
+      </ul>
+    </div>
+  </div> `
+    var div = document.querySelector(".shuffling>:nth-child(5)>:nth-child(2)");
+    console.log(div);
+    div.innerHTML +=html;
+
+   
+  })
+
   var index=0;
   // 自动轮播
   // var timer=setInterval(next,3000);

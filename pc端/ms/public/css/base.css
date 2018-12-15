@@ -1,0 +1,10 @@
+/* body 整体背景颜色 */
+body{
+  background: #fae8c8;
+}
+.main_w{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 500;
+}

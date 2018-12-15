@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+  <header id="header"></header>
+  <section>
+    <div id="search"></div>
+    <div class="main_w">
+      <div class="loginpage">
+        <h3 class="nl_title">
+          <span class="nl_left"></span>
+          登录美食杰
+          <span class="nl_right"></span>
+        </h3>
+        <div class="nl_dl_w">
+          <div class="nl_dl_wl">
+            <a href="javascript:;" class="a1">
+              <span class="icon"></span>
+              <!-- 微信登录 -->
+            </a>
+            <a href="javascript:;" class="a2">
+              <span class="icon"></span>
+              <!-- QQ登录 -->
+            </a>
+            <a href="javascript:;" class="a3">
+              <span class="icon"></span>
+              <!-- 微博登录 -->
+            </a>
+          </div>
+          <a href="javascript:;" class="golink" id="more_dsf_btn">更多第三方登录方式</a>
+          <div class="nl_moredsf" style="display:block;">
+            <a href="javascript:;" class="a1">人人网账号登录</a>
+            <a href="javascript:;" class="a2">百度账号登录</a>
+            <a href="javascript:;" class="a3">开心网账号登录</a>
+            <a href="javascript:;" class="a4">盛大通行证登录</a>
+          </div>
+        </div>
+        <div class="nl_or"></div>
+        <div class="nl_loginbox">
+          <form action="post">
+            <input type="hidden" name="">
+            <div class="nl_loginitem">
+              <input type="text" class="text" value="" name="username" placeholder="请输入手机号/邮箱/昵称">
+            </div>
+            <div class="nl_loginitem">
+              <input type="password" class="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="nl_loginitem" style="height:33px;">
+              <label><input type="checkbox" value="auto" class="checkbox"> 下次自动登录</label>
+              <a href="javascript:;" class="forgetpassword">忘记密码？</a>
+            </div>
+            <div class="nl_loginitem" style="text-align:center;">
+              <input type="submit" class="logins" value="登录">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer id="footer"></footer>
+  <script src="js/jquery-3.2.1.js"></script>
+  <script src="js/ajax.js"></script>
+  <script src="js/header.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/footer.js"></script>
+</body>
+</html>
