@@ -1,0 +1,13 @@
+/* body 整体背景颜色 */
+body{
+  background: #fae8c8;
+  margin: 0px;
+  padding: 0px;
+}
+.main_w{
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 500;
+}
+[v-cloak]{display: none;}
