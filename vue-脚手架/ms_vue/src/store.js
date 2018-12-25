@@ -5,11 +5,18 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    islogin:false
+    islogin:false,
+    uname:''
   },
   mutations: {
-    signin(){this.islogin=true},
-    signout(){this.islogin=false},
+    signin(state,uname){
+      this.state.islogin=true;
+      this.state.uname=uname;
+    },
+    signout(){
+      this.state.islogin=false;
+      this.state.uname="";
+    },
     // isLogin(){}
   },
   actions: {

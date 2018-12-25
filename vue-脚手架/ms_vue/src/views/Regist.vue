@@ -4,7 +4,7 @@
       <div class="loginpage">
         <h3 class="nl_title">
           <span class="nl_left"></span>
-          登录美食杰
+          注册美食杰
           <span class="nl_right"></span>
         </h3>
         <div class="nl_dl_w">
@@ -22,8 +22,8 @@
               <!-- 微博登录 -->
             </a>
           </div>
-          <a href="javascript:;" class="golink" @click="show1">{{text1}}</a>
-          <div class="nl_moredsf" :style="{display:dis1}">
+          <a href="javascript:;" class="golink" id="more_dsf_btn" @click="show">{{text}}</a>
+          <div class="nl_moredsf" :style="{display:dis}">
             <a href="javascript:;" class="a1">人人网账号登录</a>
             <a href="javascript:;" class="a2">百度账号登录</a>
             <a href="javascript:;" class="a3">开心网账号登录</a>
@@ -31,23 +31,66 @@
           </div>
         </div>
         <div class="nl_or"></div>
-        <div class="nl_loginbox">
-          <input type="hidden" name="">
-          <div class="nl_loginitem">
-            <input type="text" class="text" value="" name="username" placeholder="请输入手机号/邮箱/昵称" v-model="uname">
+        <div class="nl_more_zc">
+          <div class="nl_tab">
+            <a href="javascritp:;" :class="act==1?'current':''" @click="phone">手机注册</a>
+            |
+            <a href="javascript:;" :class="act==2?'current':''" @click="email">邮箱注册</a>
           </div>
-          <div class="nl_loginitem">
-            <input type="password" class="password" name="password" placeholder="请输入密码" v-model="upwd">
-          </div>
-          <div class="nl_loginitem" style="height:33px;">
-            <label><input type="checkbox" value="auto" class="checkbox"> 下次自动登录</label>
-            <a href="javascript:;" class="forgetpassword">忘记密码？</a>
-          </div>
-          <div class="nl_loginitem" style="text-align:center;">
-            <input type="button" class="logins" value="登录" @click="signin">
+          <div class="nl_loginbox_a">
+            <div class="nl_loginbox_b" :style="{marginLeft:left}">
+              <div class="nl_loginbox_c">
+                <div class="nl_loginitem">
+                  <input type="text" class="text" placeholder="请输入手机号">
+                </div>
+                <div class="login_tips tip"></div>
+                <div class="nl_loginitem">
+                  <input type="text" class="text widtha" placeholder="123456" readonly>
+                  <a href="javascript:;" class="phone_yzmbtn sended">免费获取验证码</a>
+                </div>
+                <div class="login_tips false" style="display:none;"></div>
+                <div class="nl_loginitem">
+                  <input type="password" class="password" placeholder="请输入密码">
+                </div>
+                <div class="login_tips tip"></div>
+                <div class="login_pw_tips state1"></div>
+                <div class="nl_loginitem heighta">
+                  <label>
+                    <input type="checkbox" class="checkbox">
+                    我已阅读并且同意
+                    <a href="javascript:;">美食节用户使用协议</a>
+                  </label>
+                </div>
+                <div class="nl_loginitem align">
+                  <input type="button" class="logins" value="注册">
+                </div>
+              </div>
+              <div class="nl_loginbox_c">
+                <div class="nl_loginitem">
+                  <input type="text" class="text" name="emil" placeholder="请输入邮箱">
+                </div>
+                <div class="login_tips tip"></div>
+                <div class="nl_loginitem">
+                  <input type="password" class="password" name="password" placeholder="请输入密码">
+                </div>
+                <div class="login_tips tip"></div>
+                <div class="login_pw_tips state2"></div>
+                <div class="nl_loginitem heighta">
+                  <label>
+                    <input type="checkbox" class="checkbox">
+                    我已阅读并且同意
+                    <a href="javascript:;">美食节用户使用协议</a>
+                  </label>
+                </div>
+                <div class="nl_loginitem align">
+                  <input type="button" class="logins" value="注册">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <router-link to="/regist" href="javascript:;" class="golink"> 还没有账号？免费注册 ∨</router-link>
+        <router-link to="/login" href="javascript:;" class="golink">已有账号？马上登陆 ∧</router-link
+        >
       </div>
     </div>
   </div>
@@ -56,38 +99,30 @@
   export default {
     data() {
       return {
-        uname:'',
-        upwd:'',
-        text1:'更多第三方登录方式 ∨',
-        dis1:'none',
+        act:1,
+        left:"0px",
+        dis:'none',
+        text:'更多第三方登录方式 ∨',
       }
     },
     methods: {
-      show1(){
-        if(this.dis1=="none"){
-          this.text1="收起 ∧";
-          this.dis1="block";
+      phone(){
+        this.act=1;
+        this.left="0px";
+      },
+      email(){
+        this.act=2;
+        this.left="-320px";
+      },
+      show(){
+        if(this.dis=="none"){
+          this.text="收起 ∧";
+          this.dis="block";
         }else{
-          this.text1="更多第三方登录方式 ∨";
-          this.dis1="none";
+          this.text="更多第三方登录方式 ∨";
+          this.dis="none";
         }
       },
-      signin(){
-        // 获取参数
-        var u = this.uname ;
-        var p = this.upwd;
-        var url = "http://127.0.0.1:8000/login/signin";
-        this.axios.post(url,`uname=${u}&upwd=${p}`).then(result=>{
-          if(result.data.code ==1){
-            alert("登录成功");
-            this.$store.commit("signin",result.data.uname);
-            this.$router.push("/index");
-          }else{
-            alert("用户名或密码错误！")
-          }
-        })
-        
-      }
     }
   }
 </script>
@@ -291,7 +326,6 @@
 
 /* 注册界面 */
 .nl_more_zc{
-  display: none;
   width: 60%;
   text-align: center;
   background: #f5f5f5;
@@ -315,7 +349,13 @@
 .nl_tab a{
   font-size: 18px;
   color: #999;
+  text-decoration: none;
 }
+/* .nl_tab a:hover{
+  font-size: 18px;
+  color: #ec5541;
+  text-decoration: underline;
+} */
 .nl_loginbox_a{
   width: 320px;
   overflow: hidden;
@@ -323,7 +363,7 @@
 }
 .nl_loginbox_b{
   width: 640px;
-  margin-left: 0px;
+  transition: .5s;
 }
 .nl_loginbox_c{
   width: 320px;

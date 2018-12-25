@@ -2,9 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import Header from './communal/Header.vue'
-import Footer from './communal/Footer.vue'
-import Search from './communal/Search.vue'
+import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
+import Search from './components/Search.vue'
 // 引入axios库(VueResource)
 import axios from 'axios'
 
