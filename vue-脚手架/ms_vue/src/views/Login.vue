@@ -1,4 +1,6 @@
 <template>
+<div>
+  <ms-totop></ms-totop>
   <div class="ms-login">
     <div class="main_w">
       <div class="loginpage">
@@ -51,6 +53,7 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 <script>
   export default {

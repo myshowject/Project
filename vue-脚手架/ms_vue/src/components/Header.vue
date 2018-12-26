@@ -7,7 +7,7 @@
           <a href=""><img src="img/header/logo.png" alt="" srcset=""></a> 
         </div>
         <div class="search" v-cloak>
-          <input type="text" placeholder="请输入菜谱/食材/菜单/作者" class="input_txt" v-model="kwords" >
+          <input type="text" placeholder="请输入菜谱/食材/菜单/作者" class="input_txt" v-model="kwords" @keyup.13="search">
           <button class="input_btn" @click="handlSearch">搜索</button>
         </div>
         <div class="login" id="signout" v-if="!this.$store.state.islogin">
@@ -107,7 +107,7 @@
                   <strong>22</strong>
                   分
                   <span class="sign_in">
-                    <a href="javascript:;" @click="Sign">{{sign}}</a>
+                    <a href="javascript:;" @click="Sign" :style="">{{sign}}</a>
                   </span>
                 </div>
                 <div class="rili_w">
@@ -406,6 +406,9 @@
     methods: {
       handlSearch(){
         console.log(`查询${this.kwords}`)
+      },
+      search(){
+        this.$router.push("/products/"+this.kwords)
       },
       Sign(){
         this.sign="已签到";

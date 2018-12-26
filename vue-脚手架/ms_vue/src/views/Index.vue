@@ -1,4 +1,7 @@
 <template>
+<div>
+  <ms-search></ms-search>
+  <ms-totop></ms-totop>
   <div class="ms-index">
     <div class="main_w">
       <div class="main"  v-cloak>
@@ -234,11 +237,11 @@
             <div class="shuffling_none" :class="activeround==1?'shuffling_item1':activeround==2?'shuffling_item2':activeround==3?'shuffling_item3':activeround==4?'shuffling_item4':''">
               <h3 class="month_intr">{{res[0].roundtitle}}</h3>
               <div class="round">
-               <div class="round_class" v-for="(p,index) of res.slice(0,7)" :key="p.iid" @mouseenter="move(index)" @mouseleave="sp(index)">
+               <div class="round_class" v-for="(p,index) of res.slice(0,7)" :key="index" @mouseenter="move(index)" @mouseleave="sp(index)">
                   <a target="_blank" href="javascript:;" :title="p.rname" class="big">
                     <img class="img" :src="p.pic" :alt="p.rname" >
                     <div class="r_c_w">
-                      <div class="i" :class=" num === index ? 'trans' :num1===index? 'sp' :''">
+                      <div class="i" :class=" num == index ? 'trans' :'sp'">
                         <div class="c1">
                           <strong>{{p.rname}}</strong>
                           <span>{{p.contents}} 评论  {{p.point}} 人气</span>
@@ -279,11 +282,11 @@
             <div class="shuffling_none" :class="activeround==1?'shuffling_item2':activeround==2?'shuffling_item3':activeround==3?'shuffling_item4':activeround==4?'shuffling_item1':''">
               <h3 class="month_intr">{{res[7].roundtitle}}</h3>
               <div class="round">
-               <div class="round_class" v-for="(p,index) of res.slice(7,14)" :key="p.iid"  @mouseenter="move(index)" @mouseleave="sp(index)">
+               <div class="round_class" v-for="(p,index) of res.slice(7,14)" :key="index"  @mouseenter="move(index)" @mouseleave="sp(index)">
                   <a target="_blank" href="javascript:;" :title="p.rname" class="big">
                     <img class="img" :src="p.pic" :alt="p.rname" >
                     <div class="r_c_w">
-                      <div class="i" :class=" num === index ? 'trans' :num1===index? 'sp' :''">
+                      <div class="i" :class=" num == index ? 'trans'  :'sp'">
                         <div class="c1">
                           <strong>{{p.rname}}</strong>
                           <span>{{p.contents}} 评论  {{p.point}} 人气</span>
@@ -324,11 +327,11 @@
             <div class="shuffling_none" :class="activeround==1?'shuffling_item3':activeround==2?'shuffling_item4':activeround==3?'shuffling_item1':activeround==4?'shuffling_item2':''">
               <h3 class="month_intr">{{res[14].roundtitle}}</h3>
               <div class="round">
-               <div class="round_class" v-for="(p,index) of res.slice(14,21)" :key="p.iid"  @mouseenter="move(index)" @mouseleave="sp(index)">
+               <div class="round_class" v-for="(p,index) of res.slice(14,21)" :key="index"  @mouseenter="move(index)" @mouseleave="sp(index)">
                   <a target="_blank" href="javascript:;" :title="p.rname" class="big">
                     <img class="img" :src="p.pic" :alt="p.rname" >
                     <div class="r_c_w">
-                      <div class="i" :class=" num === index ? 'trans' :num1===index? 'sp' :''">
+                      <div class="i" :class=" num == index ? 'trans' :'sp'">
                         <div class="c1">
                           <strong>{{p.rname}}</strong>
                           <span>{{p.contents}} 评论  {{p.point}} 人气</span>
@@ -369,11 +372,11 @@
             <div class="shuffling_none" :class="activeround==1?'shuffling_item4':activeround==2?'shuffling_item1':activeround==3?'shuffling_item2':activeround==4?'shuffling_item3':''">
               <h3 class="month_intr">{{res[21].roundtitle}}</h3>
               <div class="round">
-               <div class="round_class" v-for="(p,index) of res.slice(-7)" :key="p.iid"  @mouseenter="move(index)" @mouseleave="sp(index)">
+               <div class="round_class" v-for="(p,index) of res.slice(-7)" :key="index"  @mouseenter="move(index)" @mouseleave="sp(index)">
                   <a target="_blank" href="javascript:;" :title="p.rname" class="big">
                     <img class="img" :src="p.pic" :alt="p.rname" >
                     <div class="r_c_w">
-                      <div class="i" :class=" num === index ? 'trans' :num1===index? 'sp' :''">
+                      <div class="i" :class=" num == index ? 'trans'  :'sp'">
                         <div class="c1">
                           <strong>{{p.rname}}</strong>
                           <span>{{p.contents}} 评论  {{p.point}} 人气</span>
@@ -555,8 +558,8 @@
         </div>
       </div>
     </div>
-   
   </div>
+</div>
 </template>
 
 <script>
@@ -597,8 +600,7 @@
         hov2:4,
         hov3:7,
         hov4:10,
-        num:"",
-        num1:'',
+        num:null,
         timer:null,
         timer1:null,
       }
@@ -677,7 +679,7 @@
         this.num = index;
       },
       sp(index){
-        this.num1 = index;
+        this.num = null;
       },
       hover1(){
         this.hov1=1;

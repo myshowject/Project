@@ -5,6 +5,7 @@ import store from './store'
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import Search from './components/Search.vue'
+import Totop from './components/Totop.vue'
 // 引入axios库(VueResource)
 import axios from 'axios'
 
@@ -17,6 +18,7 @@ Vue.config.productionTip = false
 Vue.component("ms-header",Header);
 Vue.component("ms-footer",Footer);
 Vue.component("ms-search",Search);
+Vue.component("ms-totop",Totop);
 
 //引入vue-resource库
 import VueResource from 'vue-resource';
