@@ -7,7 +7,8 @@ const session = require("express-session");
 const index = require("./routes/index");
 const header = require("./routes/header");
 const login =require("./routes/login");
-
+const apphome = require("./routes/apphome");
+const apprecipes = require("./routes/apprecipes");
 
 var app = express();
 var server = app.listen(8000,()=>{
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({
   extended:false
 }))
 app.use(cors({
-  origin:["http://127.0.0.1:8000","http://localhost:8000","http://127.0.0.1:8001"],
+  origin:["http://127.0.0.1:8000","http://localhost:8000","http://127.0.0.1:8001","http://127.0.0.1:8002"],
   credentials:true
 }))
 // 7.2：对模块配置
@@ -37,3 +38,6 @@ app.use(express.static("public"));
 app.use('/index',index);
 app.use('/header',header);
 app.use("/login",login);
+// app
+app.use("/apphome",apphome);
+app.use("/apprecipes",apprecipes);

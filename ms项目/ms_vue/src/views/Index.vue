@@ -745,6 +745,9 @@
   
 /* 轮播定位时间 */
 *{margin: 0;padding: 0}
+.ms-index{
+  margin: 0 auto;
+}
 ul{
   list-style: none;
 }

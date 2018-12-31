@@ -107,7 +107,7 @@
                   <strong>22</strong>
                   分
                   <span class="sign_in">
-                    <a href="javascript:;" @click="Sign" :style="">{{sign}}</a>
+                    <a href="javascript:;" @click="Sign" >{{sign}}</a>
                   </span>
                 </div>
                 <div class="rili_w">
@@ -200,11 +200,11 @@
             <strong :class="show==1?'border_b_red':''">首页</strong>
           </router-link> 
         </li>
-        <li class="strong" @click="li2">
+        <li class="strong" @click="li2" @mouseenter="block1" @mouseleave="none1">
           <a href="#">
             <strong :class="show==2?'border_b_red':''">菜谱大全</strong>
           </a>
-          <div class="nav_first">
+          <div class="nav_first" :style="{display:dis4}">
             <div class="first_a">
               <a href="#">家常菜谱</a>
               <ul class="first_ul">
@@ -285,11 +285,11 @@
             <div id="img_first"></div>
           </div>
         </li>
-        <li class="strong" @click="li3">
+        <li class="strong" @click="li3" @mouseenter="block2" @mouseleave="none2">
           <a href="#">
             <strong :class="show==3?'border_b_red':''">饮食健康</strong>
           </a>
-          <div class="nav_last">
+          <div class="nav_last" :style="{display:dis5}">
             <div class="first_a">
               <a href="#">饮食健康</a>
               <ul class="first_ul">
@@ -397,6 +397,8 @@
         dis1:"none",
         dis2:"none",
         dis3:"none",
+        dis4:"none",
+        dis5:"none",
         sign:"签到",
       }
     },
@@ -406,6 +408,18 @@
     methods: {
       handlSearch(){
         console.log(`查询${this.kwords}`)
+      },
+      block1(){
+        this.dis4="block"; 
+      },
+      none1(){
+        this.dis4="none";
+      },
+      block2(){
+        this.dis5="block";
+      },
+      none2(){
+        this.dis5="none";
       },
       search(){
         this.$router.push("/products/"+this.kwords)
@@ -613,20 +627,18 @@ a{
 }
 
 .nav_first,.nav_last{
-  display: none;
   width: 990px;
   height: 285px;
   background: #fafafa;
   position: relative;
   box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
-  left: -103px;
   top: 2px;
 }
-.nav_last{
-  left: -231px;
+.nav_first{
+  left:-123px ;
 }
-.main_nav>li:nth-child(2):hover .nav_first,.main_nav>li:nth-child(3):hover .nav_last{
-  display: block;
+.nav_last{
+  left: -250.5px;
 }
 .first_ul{
   margin-left: -38px;
