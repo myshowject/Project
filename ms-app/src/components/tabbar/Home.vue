@@ -23,7 +23,7 @@
         </a>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-        <router-link to="/recipes">
+        <router-link to="/Videorecipes">
           <img src="http://127.0.0.1:8000/img/app/home/shipincaipu.png">
           <div class="mui-media-body">视频菜谱</div>
         </router-link>

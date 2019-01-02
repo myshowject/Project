@@ -7,8 +7,8 @@
       <mt-button icon="search" slot="right"></mt-button>
     </mt-header>
     <ul class="mui-table-view">
-      <li class="mui-table-view-cell mui-media" v-for="item of list" :key="item.id">
-        <a href="javascript:;">
+      <li class="mui-table-view-cell mui-media" v-for="item of list" :key="item.recid">
+        <router-link :to="'/Videoinfo?id='+item.recid">
           <img class="mui-media-object mui-pull-left" :src="item.pic">
           <div class="mui-media-body">
            {{item.title}}
@@ -17,7 +17,7 @@
               <span>点击：{{item.point}}次</span>
             </p>
           </div>
-        </a>
+        </router-link>
         <div class="details">
           <em class="splistbtn">
             <i></i>
@@ -25,14 +25,18 @@
         </div>
       </li>
     </ul>
-  <!-- <mt-button size="large" type="primary" >加载更多</mt-button> -->
+  <mt-button size="large" @click="recipes">{{content}}</mt-button>
   </div>
 </template>
 <script>
   export default {
     data() {
       return {
-        list:[]
+        list:[],
+        pageIndex:0,
+        pageSize:4,
+        pageCount:1,
+        content:'加载更多'
       }
     },
     created(){
@@ -40,9 +44,19 @@
     },
     methods:{
       recipes(){
-        this.axios.get("http://127.0.0.1:8000/apprecipes/videorecipes").then(res=>{
-          this.list = res.data;
-          console.log(res.data)
+        this.pageIndex ++;
+        var pno = this.pageIndex;
+        var ps = this.pageSize;
+        var hasMore = this.pageIndex <= this.pageCount;
+        if(!hasMore){
+          this.content = "没有更多数据了";
+          return;
+        } 
+        this.axios.get("http://127.0.0.1:8000/apprecipes/getRecipes?pno="+pno+"&pageSize="+ps).then(res=>{
+          var  rows = this.list.concat(res.data.data);
+          this.list = rows;
+          console.log(this.list)
+          this.pageCount = res.data.pageCount;  
         })
       }
     }
