@@ -33,59 +33,67 @@
         <div class="nl_or"></div>
         <div class="nl_more_zc">
           <div class="nl_tab">
-            <a href="javascritp:;" :class="act==1?'current':''" @click="phone">手机注册</a>
+            <a href="javascritp:;" :class="act==2?'current':''" @click="phone">手机注册</a>
             |
-            <a href="javascript:;" :class="act==2?'current':''" @click="email">邮箱注册</a>
+            <a href="javascript:;" :class="act==1?'current':''" @click="email">用户注册</a>
           </div>
           <div class="nl_loginbox_a">
             <div class="nl_loginbox_b" :style="{marginLeft:left}">
-              <div class="nl_loginbox_c">
-                <div class="nl_loginitem">
-                  <input type="text" class="text" placeholder="请输入手机号">
+              <form>
+                <div class="nl_loginbox_c">
+                  <div class="nl_loginitem">
+                    <input type="text" class="text" placeholder="请输入手机号">
+                  </div>
+                  <div class="login_tips tip"></div>
+                  <div class="nl_loginitem">
+                    <input type="text" class="text widtha" placeholder="123456" readonly>
+                    <a href="javascript:;" class="phone_yzmbtn sended" @click="countDown">{{content}}</a>
+                  </div>
+                  <div class="login_tips false" style="display:none;"></div>
+                  <div class="nl_loginitem">
+                    <input type="password" class="password" placeholder="请输入密码">
+                  </div>
+                  <div class="login_tips tip"></div>
+                  <div class="login_pw_tips state1"></div>
+                  <div class="nl_loginitem heighta">
+                    <label>
+                      <input type="checkbox" class="checkbox">
+                      我已阅读并且同意
+                      <a href="javascript:;">美食节用户使用协议</a>
+                    </label>
+                  </div>
+                  <div class="nl_loginitem align">
+                    <input type="button" class="logins" value="注册">
+                  </div>
                 </div>
-                <div class="login_tips tip"></div>
-                <div class="nl_loginitem">
-                  <input type="text" class="text widtha" placeholder="123456" readonly>
-                  <a href="javascript:;" class="phone_yzmbtn sended">免费获取验证码</a>
+              </form>
+              <form>
+                <div class="nl_loginbox_c">
+                  <div class="nl_loginitem">
+                    <input type="text" class="text" name="uname" placeholder="请输入用户名" v-model="uname" @blur.prevent="checkName">
+                  </div>
+                  <div class="login_tips tip"></div>
+                  <div class="nl_loginitem">
+                    <input type="password" class="password" name="password" placeholder="请输入密码" v-model="upwd1">
+                  </div>
+                  <div class="login_tips tip"></div>
+                  <div class="nl_loginitem">
+                    <input type="password" class="password" name="password" placeholder="请输入确认密码" v-model="upwd2">
+                  </div>
+                  <div class="login_tips tip"></div>
+                  <div class="login_pw_tips state2"></div>
+                  <div class="nl_loginitem heighta">
+                    <label>
+                      <input type="checkbox" class="checkbox">
+                      我已阅读并且同意
+                      <a href="javascript:;">美食节用户使用协议</a>
+                    </label>
+                  </div>
+                  <div class="nl_loginitem align">
+                    <input type="button" class="logins" value="注册" @click="regist">
+                  </div>
                 </div>
-                <div class="login_tips false" style="display:none;"></div>
-                <div class="nl_loginitem">
-                  <input type="password" class="password" placeholder="请输入密码">
-                </div>
-                <div class="login_tips tip"></div>
-                <div class="login_pw_tips state1"></div>
-                <div class="nl_loginitem heighta">
-                  <label>
-                    <input type="checkbox" class="checkbox">
-                    我已阅读并且同意
-                    <a href="javascript:;">美食节用户使用协议</a>
-                  </label>
-                </div>
-                <div class="nl_loginitem align">
-                  <input type="button" class="logins" value="注册">
-                </div>
-              </div>
-              <div class="nl_loginbox_c">
-                <div class="nl_loginitem">
-                  <input type="text" class="text" name="emil" placeholder="请输入邮箱">
-                </div>
-                <div class="login_tips tip"></div>
-                <div class="nl_loginitem">
-                  <input type="password" class="password" name="password" placeholder="请输入密码">
-                </div>
-                <div class="login_tips tip"></div>
-                <div class="login_pw_tips state2"></div>
-                <div class="nl_loginitem heighta">
-                  <label>
-                    <input type="checkbox" class="checkbox">
-                    我已阅读并且同意
-                    <a href="javascript:;">美食节用户使用协议</a>
-                  </label>
-                </div>
-                <div class="nl_loginitem align">
-                  <input type="button" class="logins" value="注册">
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
@@ -100,19 +108,85 @@
     data() {
       return {
         act:1,
-        left:"0px",
+        left:"-320px",
         dis:'none',
         text:'更多第三方登录方式 ∨',
+        content:'免费获取验证码',
+        totalTime:60,
+        uname:'',
+        upwd1:'',
+        upwd2:'',
+        isSumit:false,
       }
     },
     methods: {
+      checkName(){
+        var uname = this.uname;
+        var url  = "http://127.0.0.1:8000/regist/existsName?uname="+uname;
+        this.axios.get(url).then(res=>{
+          if(res.data.code > 0){
+            this.isSumit = false;
+            alert(res.data.msg);
+          }else{
+            this.isSumit = true; 
+            alert(res.data.msg);
+          }
+        })
+      },
+      regist(){
+        if(!this.isSumit){
+          alert("用户名已存在，请重新填写");
+          return;
+        };
+        var uname = this.uname;
+        var upwd1 = this.upwd1;
+        var upwd2 = this.upwd2;
+        var reguname = /^[\u4e00-\u9fa5]{2,5}|[a-z0-9_]{3,12}$/i ;
+        var regupwd = /^[\w\.]{6,12}$/i;
+        if(!reguname.test(uname)){
+          alert("用户名格式不正确");
+          return;
+        };
+        if(!regupwd.test(upwd1)){
+          alert("用户密码格式不正确");
+          return;
+        };
+        if(upwd1 != upwd2){
+          alert("两次密码输入不一致")
+          return;
+        };
+        var url = 'http://127.0.0.1:8000/regist/register';
+        this.axios.post(url,`uname=${uname}&upwd=${upwd1}`
+        ).then(res=>{
+          if(res.data.code>0){
+            alert(res.data.msg);
+            this.$router.push("/login");
+          }else{
+            alert(res.data.msg);
+          }
+        })
+      },
+      countDown(){
+        this.content = this.totalTime + 's后重新发送';
+        var clock = window.setInterval(()=>{
+          this.totalTime -- ;
+          this.content = this.totalTime + 's后重新发送';
+          if(this.totalTime < 0){
+            window.clearInterval(clock);
+            this.content = "重新获取验证码";
+            alert("验证码已发送");
+            this.totalTime = 60
+          }
+        },1000)
+      },
       phone(){
-        this.act=1;
+       this.act=2;
         this.left="0px";
       },
       email(){
-        this.act=2;
-        this.left="-320px";
+         this.act=1;
+         this.left="-320px";
+        
       },
       show(){
         if(this.dis=="none"){
@@ -417,6 +491,7 @@
   background: #ddd;
   border:1px solid #ccc;
   color: #999;
+  text-decoration: none;
 }
 .login_pw_tips{
   display: none;

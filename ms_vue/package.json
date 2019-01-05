@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "mint-ui": "^2.2.13",
     "session": "^0.1.0",
     "vue": "^2.5.17",
     "vue-resource": "^1.5.1",

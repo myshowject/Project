@@ -3,17 +3,6 @@
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media">
         <a href="javascript:;">
-          <div class="mui-media-body">
-            <h3>左宗棠鸡的做法</h3> 
-            <p class='mui-ellipsis'>
-              <span>时长：01:23</span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span>发布时间：2018-11-03</span>
-            </p>
-          </div>
-        </a>
-      </li>
-      <li class="mui-table-view-cell mui-media">
-        <a href="javascript:;">
           <img class="mui-media-object mui-pull-left imgs-1" src="http://127.0.0.1:8000/img\app\Introduce/timg.png">
           <div class="mui-media-body">
             <p class="name p">
@@ -79,6 +68,9 @@
       return {
         
       }
+    },
+    created() {
+      // console.log(this.duration);
     },
   }
 </script>

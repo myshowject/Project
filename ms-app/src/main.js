@@ -32,8 +32,20 @@ Vue.filter("datatimeFilter",function(val){
   d <10 && (d = "0" + d);
   return `${y}-${m}-${d}`;
 })
+Vue.filter("dtimeFilter",function(val){
+  var time = val;
+  var m = Math.floor(time/60%60);
+  var s = Math.floor(time%60);
+  m < 10 && (m = '0' + m);
+  s < 10 && (s = '0' + s);
+  return `${m}:${s}`;
+})
+
 new Vue({
   router,
   store,
+  data:{
+    Bus:new Vue()
+  },
   render: h => h(App)
 }).$mount('#app')

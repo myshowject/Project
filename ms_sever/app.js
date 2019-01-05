@@ -7,6 +7,7 @@ const session = require("express-session");
 const index = require("./routes/index");
 const header = require("./routes/header");
 const login =require("./routes/login");
+const register = require("./routes/regist");
 const apphome = require("./routes/apphome");
 const apprecipes = require("./routes/apprecipes");
 
@@ -38,6 +39,7 @@ app.use(express.static("public"));
 app.use('/index',index);
 app.use('/header',header);
 app.use("/login",login);
+app.use("/regist",register);
 // app
 app.use("/apphome",apphome);
 app.use("/apprecipes",apprecipes);

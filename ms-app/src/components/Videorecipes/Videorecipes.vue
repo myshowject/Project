@@ -22,6 +22,7 @@
           <em class="splistbtn">
             <i></i>
           </em>
+          <span>{{msg}}</span>
         </div>
       </li>
     </ul>
@@ -36,11 +37,16 @@
         pageIndex:0,
         pageSize:4,
         pageCount:1,
-        content:'加载更多'
+        content:'加载更多',
+        msg:''
       }
     },
     created(){
       this.recipes();
+      this.$root.Bus.$on("send",(val)=>{
+        this.msg = val;
+        console.log(this.msg);
+      })
     },
     methods:{
       recipes(){
@@ -125,5 +131,17 @@
     border-top: 7px solid transparent;
     border-bottom: 7px solid transparent;
     border-left: 9px solid #fff;
+  }
+  .details span {
+    position: absolute;
+    bottom: 9px;
+    left: 156px;
+    display: inline-block;
+    font-size: 13px;
+    color: #fff;
+    background: #000;
+    opacity: 0.6;
+    padding: 1px 2px;
+    text-align: center;
   }
 </style>

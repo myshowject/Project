@@ -227,11 +227,11 @@
           <div class="index_round_right" @click="right"></div> 
           <div class="shuffling">
             <span class="shuffling_span">
-              <a href="javascript:;" :class="activeround==1?'red':''">最新</a>
+              <a href="javascript:;" :class="activeround==1?'red':''" @click="active1">最新</a>
               <span> | 最热：</span>
-              <a href="javascript:;" :class="activeround==4?'red':''">一小时</a>
-              <a href="javascript:;" :class="activeround==3?'red':''">今日</a>
-              <a href="javascript:;" :class="activeround==2?'red':''">七天</a>
+              <a href="javascript:;" :class="activeround==4?'red':''" @click="active2">一小时</a>
+              <a href="javascript:;" :class="activeround==3?'red':''" @click="active3">今日</a>
+              <a href="javascript:;" :class="activeround==2?'red':''" @click="active4">七天</a>
               <a target="_blank" href="javascript:;">更多菜谱 &gt;</a>
             </span>
             <div class="shuffling_none" :class="activeround==1?'shuffling_item1':activeround==2?'shuffling_item2':activeround==3?'shuffling_item3':activeround==4?'shuffling_item4':''">
@@ -647,6 +647,18 @@
       },
       start1(){
        this.timer1 = setInterval(this.right,3000)
+      },
+      active1(){
+        this.activeround = 1;
+      },
+      active2(){
+        this.activeround = 4;
+      },
+      active3(){
+        this.activeround = 3;
+      },
+      active4(){
+        this.activeround = 2;
       },
       a1(){
         this.active = 1;
