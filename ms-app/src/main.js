@@ -44,8 +44,5 @@ Vue.filter("dtimeFilter",function(val){
 new Vue({
   router,
   store,
-  data:{
-    Bus:new Vue()
-  },
   render: h => h(App)
 }).$mount('#app')

@@ -19,14 +19,9 @@
         <div class="mui-card-content-inner">
           <h3>视频内容</h3>
           <ul>
-            <li>1、鸡腿肉280g切丁，姜片5g，蒜末5g，小米椒适量切段，甜椒20g切块</li>
-            <li>2、倒入鸡腿肉，蛋黄一个，盐2g，玉米淀粉25g，搅拌均匀</li>
-            <li>3、放入白砂糖15g，白醋15g，生抽8g，淀粉5g，辣椒油10g搅拌均匀</li>
-            <li>4、起锅倒入食用油200ml，大火烧至七成熟，放入鸡肉，大火炸至表面金黄</li>
-            <li>5、另起锅倒入食用油5ml，倒入姜片，蒜末，小米椒，大火爆香</li>
-            <li>6、倒入鸡肉，翻炒均匀，倒入调料 翻炒均匀，倒入甜椒</li>
+            <li v-for="item in list " :key="item.id">{{item.practice}}</li>
           </ul>
-          <h3>视频内容</h3>
+          <h3>相关视频</h3>
           <ul class="mui-table-view">
             <li class="mui-table-view-cell mui-media dashed">
               <a href="javascript:;">
@@ -66,12 +61,25 @@
   export default {
     data() {
       return {
+        list:[]
         
       }
     },
-    created() {
-      // console.log(this.duration);
+    methods: {
+      getPractice(){
+        var recid = this.id;
+        var url = `http://127.0.0.1:8000/appinfo/getPractice?recid=${recid}`;
+        this.axios.get(url).then(res=>{
+          this.list =res.data.data;
+          // console.log(res.data.data)
+        })
+      }
     },
+    created() {
+      this.getPractice();
+      
+    },
+    props:["id"]
   }
 </script>
 

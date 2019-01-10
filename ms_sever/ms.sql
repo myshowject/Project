@@ -46,59 +46,59 @@ INSERT INTO ms_pic_footer VALUES
 (null,"http://127.0.0.1:8000/img/footer/footerlinks.png"),
 (null,"http://127.0.0.1:8000/img/footer/footer_beian.png");
 
--- #创建数据表  ms_index_item
--- CREATE TABLE ms_index_item(
---   iid INT PRIMARY KEY AUTO_INCREMENT,
---   headtitle VARCHAR(30),
---   headline VARCHAR(40)
--- );
--- INSERT INTO ms_index_item VALUES
--- (NULL,"早餐","清晨,让厨房的飘香唤TA起床"),
--- (NULL,"午餐","中午多吃肉,补充蛋白质"),
--- (NULL,"下午茶","午后,尽享甜蜜“食”光"),
--- (NULL,"晚餐","晚饭吃得好,要有肉有菜"),
--- (NULL,"夜宵","深夜食堂开张啦！");
+#创建数据表  ms_index_item
+CREATE TABLE ms_index_item(
+  iid INT PRIMARY KEY AUTO_INCREMENT,
+  headtitle VARCHAR(30),
+  headline VARCHAR(40)
+);
+INSERT INTO ms_index_item VALUES
+(NULL,"早餐","清晨,让厨房的飘香唤TA起床"),
+(NULL,"午餐","中午多吃肉,补充蛋白质"),
+(NULL,"下午茶","午后,尽享甜蜜“食”光"),
+(NULL,"晚餐","晚饭吃得好,要有肉有菜"),
+(NULL,"夜宵","深夜食堂开张啦！");
 
--- #创建数据表  ms_index_item1
--- CREATE TABLE ms_index_item1(
---   item1id INT PRIMARY KEY AUTO_INCREMENT,
---   iid  INT, #早餐id
---   title VARCHAR(30),
---   efficacy VARCHAR(40),  #推荐
---   benefits VARCHAR(10) #功效
--- );
--- #建立外键关系
--- alter table ms_index_item1 add constraint eat2
--- foreign key(iid) references ms_index_item(iid);
+#创建数据表  ms_index_item1
+CREATE TABLE ms_index_item1(
+  item1id INT PRIMARY KEY AUTO_INCREMENT,
+  iid  INT, #早餐id
+  title VARCHAR(30),
+  efficacy VARCHAR(40),  #推荐
+  benefits VARCHAR(10) #功效
+);
+#建立外键关系
+alter table ms_index_item1 add constraint eat2
+foreign key(iid) references ms_index_item(iid);
 
--- -- SELECT a.headtitle,b.title FROM ms_index_item a
--- -- INNER JOIN ms_index_item1 b
--- -- ON a.iid=b.iid
--- -- where iid=1
+-- SELECT a.headtitle,b.title FROM ms_index_item a
+-- INNER JOIN ms_index_item1 b
+-- ON a.iid=b.iid
+-- where iid=1
 
--- INSERT INTO ms_index_item1 VALUES
--- (NULL,1,"家常烧麦","皮薄馅足,软糯可口","增强体质"),
--- (NULL,1,"泡椒什锦萝卜","酸甜脆爽,搭配白粥极佳","强身健体"),
--- (NULL,1,"家常烙饼","香酥柔软,好吃过瘾","补充能量"),
--- (NULL,2,"蜜汁烤鸡腿","香香的烤鸡腿来啦！","补充能量"),
--- (NULL,2,"贝贝南瓜蒸排骨","排骨新做法,快来试试吧","补肾"),
--- (NULL,2,"牛肉炖土豆","补中益气,滋补暖胃","强身健体"),
--- (NULL,3,"杯壁慕斯","颜控专属,美味营养","强身健体"),
--- (NULL,3,"咖啡奶冻","香浓醇厚,细滑可口","美容养颜"),
--- (NULL,3,"椰浆红豆芋圆水果捞","口感滑嫩,营养丰富","补充能量"),
--- (NULL,4,"酸辣烤鱼","学会它,在家也能吃烤鱼啦","补充蛋白"),
--- (NULL,4,"家常回锅肉","肥而不腻,满口留香","强身健体"),
--- (NULL,4,"淡菜海带萝卜汤","汤汁鲜美,去火消食","保护肠胃"),
--- (NULL,5,"自制麻辣烫","自制麻辣烫,美味又安全","益智安神"),
--- (NULL,5,"酥豆角","豆角新吃法,酥脆又营养","补充维生素"),
--- (NULL,5,"快速烤红薯","热腾腾的烤红薯来啦！","富含膳食纤维");
+INSERT INTO ms_index_item1 VALUES
+(NULL,1,"家常烧麦","皮薄馅足,软糯可口","增强体质"),
+(NULL,1,"泡椒什锦萝卜","酸甜脆爽,搭配白粥极佳","强身健体"),
+(NULL,1,"家常烙饼","香酥柔软,好吃过瘾","补充能量"),
+(NULL,2,"蜜汁烤鸡腿","香香的烤鸡腿来啦！","补充能量"),
+(NULL,2,"贝贝南瓜蒸排骨","排骨新做法,快来试试吧","补肾"),
+(NULL,2,"牛肉炖土豆","补中益气,滋补暖胃","强身健体"),
+(NULL,3,"杯壁慕斯","颜控专属,美味营养","强身健体"),
+(NULL,3,"咖啡奶冻","香浓醇厚,细滑可口","美容养颜"),
+(NULL,3,"椰浆红豆芋圆水果捞","口感滑嫩,营养丰富","补充能量"),
+(NULL,4,"酸辣烤鱼","学会它,在家也能吃烤鱼啦","补充蛋白"),
+(NULL,4,"家常回锅肉","肥而不腻,满口留香","强身健体"),
+(NULL,4,"淡菜海带萝卜汤","汤汁鲜美,去火消食","保护肠胃"),
+(NULL,5,"自制麻辣烫","自制麻辣烫,美味又安全","益智安神"),
+(NULL,5,"酥豆角","豆角新吃法,酥脆又营养","补充维生素"),
+(NULL,5,"快速烤红薯","热腾腾的烤红薯来啦！","富含膳食纤维");
 
--- #创建数据表 图片 pic
--- CREATE TABLE ms_pic_zitem(
---   zid INT PRIMARY KEY AUTO_INCREMENT,
---   item1id INT,
---   md  VARCHAR(128) #中图片路径 
--- );
+#创建数据表 图片 pic
+CREATE TABLE ms_pic_zitem(
+  zid INT PRIMARY KEY AUTO_INCREMENT,
+  item1id INT,
+  md  VARCHAR(128) #中图片路径 
+);
 
 -- #建立外键关系
 -- alter table ms_pic_zitem add constraint eat1

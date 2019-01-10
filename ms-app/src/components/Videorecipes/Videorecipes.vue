@@ -18,12 +18,12 @@
             </p>
           </div>
         </router-link>
-        <div class="details">
+        <!-- <div class="details">
           <em class="splistbtn">
             <i></i>
           </em>
-          <span>{{msg}}</span>
-        </div>
+          <span>{{$store.getters.opt}}</span>
+        </div> -->
       </li>
     </ul>
   <mt-button size="large" @click="recipes">{{content}}</mt-button>
@@ -38,15 +38,10 @@
         pageSize:4,
         pageCount:1,
         content:'加载更多',
-        msg:''
       }
     },
     created(){
       this.recipes();
-      this.$root.Bus.$on("send",(val)=>{
-        this.msg = val;
-        console.log(this.msg);
-      })
     },
     methods:{
       recipes(){
@@ -61,7 +56,7 @@
         this.axios.get("http://127.0.0.1:8000/apprecipes/getRecipes?pno="+pno+"&pageSize="+ps).then(res=>{
           var  rows = this.list.concat(res.data.data);
           this.list = rows;
-          console.log(this.list)
+          // console.log(this.list)
           this.pageCount = res.data.pageCount;  
         })
       }

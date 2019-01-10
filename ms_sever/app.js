@@ -10,6 +10,7 @@ const login =require("./routes/login");
 const register = require("./routes/regist");
 const apphome = require("./routes/apphome");
 const apprecipes = require("./routes/apprecipes");
+const appinfo = require("./routes/appinfo");
 
 var app = express();
 var server = app.listen(8000,()=>{
@@ -43,3 +44,4 @@ app.use("/regist",register);
 // app
 app.use("/apphome",apphome);
 app.use("/apprecipes",apprecipes);
+app.use("/appinfo",appinfo);

@@ -1,26 +1,26 @@
 <template>
   <div class="app-info">
-    <mt-header fixed title="菜谱视频大全" >
+    <mt-header fixed title="视频介绍" >
       <router-link to="/Videorecipes" slot="left">
         <mt-button icon="back">返回</mt-button>
       </router-link>
       <mt-button icon="search" slot="right"></mt-button>
     </mt-header>
-    <video src="http://127.0.0.1:8000/video/APP/recipes1.mp4" controls="controls"  width="375" height="210" poster="http://127.0.0.1:8000/img\app\Videorecipes/recipes-1.jpg" preload="metadata" @canplay="timeupdate($event)"></video>
+    <video :src="list.video" controls="controls"  width="375" height="210" :poster="list.pic" preload="metadata" @canplay="timeupdate($event)"></video>
     <ul class="mui-table-view">
       <li class="mui-table-view-cell mui-media">
         <a href="javascript:;">
           <div class="mui-media-body">
-            <h3>左宗棠鸡的做法</h3> 
+            <h3>{{list.title}}</h3> 
             <p class='mui-ellipsis'>
               <span>时长：{{duration | dtimeFilter}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-              <span>发布时间：2018-11-03</span>
+              <span>发布时间：{{list.ctime | datatimeFilter}}</span>
             </p>
           </div>
         </a>
       </li>
     </ul>
-    <introduce-box></introduce-box>
+    <introduce-box :id=id></introduce-box>
   </div>
 </template>
 <script>
@@ -28,18 +28,29 @@
   export default {
     data() {
       return {
-        duration:''
+        duration:'',
+        id:this.$route.query.id,
+        list:[],
+        
       }
     },
     methods: {
       timeupdate(event){
         this.duration = event.target.duration;
-        this.$root.Bus.$emit("send",this.duration);
+        // this.$store.commit("in",this.duration);
         // console.log(this.duration)
+      },
+      getNewsInfo(){
+        var id = this.id;
+        var url = `http://127.0.0.1:8000/appinfo/getNewsInfo?id=${id}` 
+        this.axios.get(url).then(res=>{
+          this.list = res.data.data;
+            // console.log(this.list)
+        })
       }
     },
     created() {
-       
+       this.getNewsInfo();
     },
     components:{
       "introduce-box": introduce
