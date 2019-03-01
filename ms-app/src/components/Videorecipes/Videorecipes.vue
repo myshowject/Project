@@ -7,8 +7,8 @@
       <mt-button icon="search" slot="right"></mt-button>
     </mt-header>
     <ul class="mui-table-view">
-      <li class="mui-table-view-cell mui-media" v-for="item of list" :key="item.recid">
-        <router-link :to="'/Videoinfo?id='+item.recid">
+      <li class="mui-table-view-cell mui-media" v-for="(item,index) of list" :key="item.recid">
+        <router-link :to="'/Videoinfo?id='+item.recid" @click.native="recid(index)">
           <img class="mui-media-object mui-pull-left" :src="item.pic">
           <div class="mui-media-body">
            {{item.title}}
@@ -18,12 +18,12 @@
             </p>
           </div>
         </router-link>
-        <!-- <div class="details">
+        <div class="details">
           <em class="splistbtn">
             <i></i>
           </em>
-          <span>{{$store.getters.opt}}</span>
-        </div> -->
+          <!-- <span>{{$store.getters.opt}}</span> -->
+        </div>
       </li>
     </ul>
   <mt-button size="large" @click="recipes">{{content}}</mt-button>
@@ -37,13 +37,17 @@
         pageIndex:0,
         pageSize:4,
         pageCount:1,
-        content:'加载更多',
+        content:'点击加载更多',
       }
     },
     created(){
       this.recipes();
     },
     methods:{
+      recid(index){
+        var id = this.list[index].recid;
+        sessionStorage.setItem("id",id);
+      },
       recipes(){
         this.pageIndex ++;
         var pno = this.pageIndex;
@@ -56,7 +60,6 @@
         this.axios.get("http://127.0.0.1:8000/apprecipes/getRecipes?pno="+pno+"&pageSize="+ps).then(res=>{
           var  rows = this.list.concat(res.data.data);
           this.list = rows;
-          // console.log(this.list)
           this.pageCount = res.data.pageCount;  
         })
       }
@@ -139,4 +142,5 @@
     padding: 1px 2px;
     text-align: center;
   }
+  
 </style>

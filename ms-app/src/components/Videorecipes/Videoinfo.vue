@@ -20,7 +20,7 @@
         </a>
       </li>
     </ul>
-    <introduce-box :id=id></introduce-box>
+    <introduce-box></introduce-box>
   </div>
 </template>
 <script>
@@ -29,23 +29,18 @@
     data() {
       return {
         duration:'',
-        id:this.$route.query.id,
-        list:[],
-        
+        list:[],  
       }
     },
     methods: {
       timeupdate(event){
         this.duration = event.target.duration;
-        // this.$store.commit("in",this.duration);
-        // console.log(this.duration)
       },
       getNewsInfo(){
-        var id = this.id;
+        var id = sessionStorage.getItem("id");   
         var url = `http://127.0.0.1:8000/appinfo/getNewsInfo?id=${id}` 
         this.axios.get(url).then(res=>{
           this.list = res.data.data;
-            // console.log(this.list)
         })
       }
     },
@@ -54,7 +49,11 @@
     },
     components:{
       "introduce-box": introduce
-    }
+    },
+    watch: {
+      "$route":'getNewsInfo'
+    },
+    
   }
 </script>
 <style>

@@ -347,13 +347,209 @@ INSERT INTO ms_pic_round VALUES
 #创建数据表 app_swipe
 CREATE TABLE app_swipe(
   swipeid INT PRIMARY KEY AUTO_INCREMENT,
-  pic VARCHAR(255)  
+  title VARCHAR(10),
+  subtitle VARCHAR(30)   
 );
-#插入数据 app_swipe
 INSERT INTO app_swipe  VALUES
-(NULL,"http://127.0.0.1:8000/img/app/home/swipe1.jpg"),
-(NULL,"http://127.0.0.1:8000/img/app/home/swipe2.jpg"),
-(NULL,"http://127.0.0.1:8000/img/app/home/swipe3.jpg");
+(NULL,'早餐',"别人家的早餐，看着都羡慕"),
+(NULL,'午餐',"午餐荤素搭配，好吃不腻"),
+(NULL,'下午茶',"下午茶简单做，成就感爆棚"),
+(NULL,'晚餐',"超给力晚餐，满足你的味蕾"),
+(NULL,'夜宵',"夜色下的美食不可错过，吃完再睡吧");
+
+alter table app_swipe_pic add constraint app_swipe1
+foreign key(swipeid) references app_swipe(swipeid);
+
+#创建数据表 app_swipe_pic
+CREATE TABLE app_swipe_pic(
+  swipid INT PRIMARY KEY AUTO_INCREMENT,
+  swipeid INT,
+  swiptitle VARCHAR(20),
+  swipsubtitle VARCHAR(30),
+  pic VARCHAR(128)   
+);
+#插入数据 app_swipe_pic
+INSERT INTO app_swipe_pic  VALUES
+(NULL,1,"芙蓉蛋卷",'色泽金黄，又香又软',"http://127.0.0.1:8000/img/app/home/swiperA1.jpg"),
+(NULL,1,"猪肉锅贴",'酥脆可口，油香四溢',"http://127.0.0.1:8000/img/app/home/swiperA2.jpg"),
+(NULL,1,"馒头披萨",'花样吃馒头，满足你的味蕾',"http://127.0.0.1:8000/img/app/home/swiperA3.jpg"),
+(NULL,2,"小白菜粉丝丸子",'家常美味，一学就会',"http://127.0.0.1:8000/img/app/home/swiperB1.jpg"),
+(NULL,2,"红烩牛腩",'冬吃牛肉，驱寒暖身',"http://127.0.0.1:8000/img/app/home/swiperB2.jpg"),
+(NULL,2,"清炒萝卜缨",'爽口清新，解腻必吃',"http://127.0.0.1:8000/img/app/home/swiperB3.jpg"),
+(NULL,3,"酒酿饼",'香甜松软，做法简单',"http://127.0.0.1:8000/img/app/home/swiperC1.jpg"),
+(NULL,3,"玫瑰洛神饮",'美容养颜，缓解疲劳',"http://127.0.0.1:8000/img/app/home/swiperC2.jpg"),
+(NULL,3,"菠萝干",'果香浓郁，香甜可口',"http://127.0.0.1:8000/img/app/home/swiperC3.jpg"),
+(NULL,4,"茄汁花菜",'酸甜开胃，超下饭',"http://127.0.0.1:8000/img/app/home/swiperD1.jpg"),
+(NULL,4,"香蒸排骨",'鲜嫩多汁，补肾润肺',"http://127.0.0.1:8000/img/app/home/swiperD2.jpg"),
+(NULL,4,"花生酱椒盐花卷",'鲜香松软，家常美味',"http://127.0.0.1:8000/img/app/home/swiperD3.jpg"),
+(NULL,5,"干炒牛河",'香气四溢，油润可口',"http://127.0.0.1:8000/img/app/home/swiperE1.jpg"),
+(NULL,5,"上校鸡块",'学会它，在家吃KFC鸡块',"http://127.0.0.1:8000/img/app/home/swiperE2.jpg"),
+(NULL,5,"腌笃鲜",'时鲜菜肴，美味难挡',"http://127.0.0.1:8000/img/app/home/swiperE3.jpg");
+
+
+
+
+
+SELECT s.swiptitle, p.figure,p.ction,p.browse,p.effect,p.contents FROM app_swipe_pic s INNER JOIN  ms_practice  p ON  s.swipid = p.swipid=1;
+
+#创建数据表 ms_practice
+CREATE TABLE `ms_practice` (
+  pracid INT PRIMARY KEY AUTO_INCREMENT,
+  swipid INT,
+  figure VARCHAR(128) COMMENT '菜样图',
+  ction  INT COMMENT '收藏',
+  browse INT COMMENT '浏览',
+  effect VARCHAR(20) COMMENT '功效',
+  contents VARCHAR(200)
+);
+
+INSERT INTO `ms_practice` VALUES 
+(NULL,1,"http://127.0.0.1:8000/img/app/practice/practice_Y1.jpg",1103,34321,'','为孩子做早餐，既要好看又要好吃，更要营养，这道早餐芙蓉蛋卷就能完美的满足了所有要求！金灿灿的蛋卷包裹着鲜嫩的虾糜，不仅色...');
+INSERT INTO `ms_practice` VALUES 
+(NULL,2,"http://127.0.0.1:8000/img/app/practice/practice_Y2.jpg",1503,3321,'','锅贴是一种煎烙的馅类食品，制作精巧，味道精美，多以猪肉馅为主料，根据季节配以不同鲜蔬菜。锅贴的形状各地不同，一般是饺子形...'),
+
+alter table ms_practice add constraint ms_practice_1
+foreign key(swipid) references app_swipe_pic(swipid);
+
+#创建数据表 ms_estimate(评分)
+CREATE TABLE `ms_estimate` (
+  esid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT,
+  estima INT COMMENT '分数'
+  -- practice VARCHAR(10) COMMENT '做法',
+  -- taste VARCHAR(10) COMMENT '味道',
+  -- ctime VARCHAR(10) COMMENT '时间',
+  -- heat  VARCHAR(10) COMMENT '热量'
+);
+INSERT INTO `ms_estimate` VALUES 
+(NULL,1,85);
+INSERT INTO `ms_estimate` VALUES 
+(NULL,2,50),
+SELECT e.estima FROM ms_estimate e WHERE e.pracid = 1;
+
+alter table ms_estimate add constraint ms_estimate_1
+foreign key(pracid) references ms_practice(pracid);
+
+#创建数据表 ms_class(类名)
+CREATE TABLE `ms_class` (
+  claid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT,
+  class  VARCHAR(30)
+);
+INSERT INTO `ms_class` VALUES 
+(NULL,1,'icon-chushimao'),
+(NULL,1,'icon-shuiping-copy'),
+(NULL,1,'icon-clock');
+INSERT INTO `ms_class` VALUES 
+(NULL,2,'icon-chushimao'),
+(NULL,2,'icon-shuiping-copy'),
+(NULL,2,'icon-clock'),
+(NULL,2,'icon-clock'),
+
+SELECT c.class FROM ms_class c WHERE c.pracid = 1;
+
+alter table ms_class add constraint ms_class_1
+foreign key(pracid) references ms_practice(pracid);
+
+#创建数据表 ms_ests(类名分类)
+CREATE TABLE `ms_ests`(
+  estid INT PRIMARY KEY AUTO_INCREMENT,
+  claid INT,
+  title VARCHAR(20)
+);
+INSERT INTO `ms_ests` VALUES 
+(NULL,1,'煮'),
+(NULL,2,'咸鲜味'),
+(NULL,3,'<10分钟');
+SELECT es.title FROM ms_ests es INNER JOIN ms_class c ON es.claid = c.claid AND c.pracid = 1
+
+alter table ms_ests add constraint ms_ests_1
+foreign key(claid) references ms_class(claid);
+
+#创建数据表 ms_ingredient (主料)
+CREATE TABLE `ms_ingredient` (
+  ingid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT,
+  contenta VARCHAR(50)
+);
+INSERT INTO `ms_ingredient` VALUES 
+(NULL,1,'鲜虾12只、'),
+(NULL,1,'胡萝卜1根 、'),
+(NULL,1,'鸡蛋3个');
+SELECT i.contenta FROM ms_ingredient i WHERE i.pracid = 1;
+
+alter table ms_ingredient add constraint ms_ingredient_1
+foreign key(pracid) references ms_practice(pracid);
+
+
+#创建数据表 ms_material (辅料)
+CREATE TABLE `ms_material` (
+  materid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT ,
+  contentb VARCHAR(50)
+);
+INSERT INTO `ms_material` VALUES 
+(NULL,1,'盐适量、'),
+(NULL,1,'食用油少许、'),
+(NULL,1,'料酒少许');
+SELECT m.contentb FROM ms_material m WHERE m.pracid = 1;
+
+alter table ms_material add constraint ms_material_1
+foreign key(pracid) references ms_practice(pracid);
+
+#创建数据表 ms_practice_step (步骤)
+CREATE TABLE `ms_practice_step` (
+  stepid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT,
+  step VARCHAR(30),
+  step_pic VARCHAR(128),
+  step_content VARCHAR(50)
+);
+INSERT INTO `ms_practice_step` VALUES 
+(NULL,1,'步骤1','http://127.0.0.1:8000/img/app/practive/practiceA-1.gif','胡萝卜去皮，切小碎丁'),
+(NULL,1,'步骤2','http://127.0.0.1:8000/img/app/practive/practiceA-2.gif','鲜虾去壳，用刀剁成虾糜。（鲜虾放入冰箱先冷冻20分钟左右，再取出更好剥壳。）'),
+(NULL,1,'步骤3','http://127.0.0.1:8000/img/app/practive/practiceA-3.gif','胡萝卜丁和虾糜放在碗中，打入1个鸡蛋。调入少许盐和料酒，用筷子搅拌均匀。'),
+(NULL,1,'步骤4','http://127.0.0.1:8000/img/app/practive/practiceA-4.gif','另取碗打入2个鸡蛋，撒上少许盐，划散成蛋液。'),
+(NULL,1,'步骤5','http://127.0.0.1:8000/img/app/practive/practiceA-5.gif','平底锅刷上一层薄油，烧热后倒入蛋液'),
+(NULL,1,'步骤6','http://127.0.0.1:8000/img/app/practive/practiceA-6.gif','摊成圆圆的蛋饼，2个鸡蛋可做2张蛋饼。'),
+(NULL,1,'步骤7','http://127.0.0.1:8000/img/app/practive/practiceA-7.gif','蛋饼煎好后取出，平铺在案板上，稍稍放凉，再将混合好的虾糜在蛋饼上铺满，轻轻卷起蛋饼，卷好后放入盘中备用。'),
+(NULL,1,'步骤8','http://127.0.0.1:8000/img/app/practive/practiceA-8.gif','蒸锅中倒入适量冷水，将蛋卷放入锅中，大火蒸12-15分钟。'),
+(NULL,1,'步骤9','http://127.0.0.1:8000/img/app/practive/practiceA-9.gif','蒸好后取出，切段后趁热食用。（可搭配个人喜欢的酱汁，比如寿司酱油或醋汁。）。');
+SELECT sp.swiptitle,s.step ,s.step_pic,s.step_content FROM ms_practice_step s INNER JOIN ms_practice p INNER JOIN app_swipe_pic sp ON p.pracid= s.pracid = sp.swipid= 1;
+alter table ms_practice_step add constraint ms_practice_step_1
+foreign key(pracid) references ms_practice(pracid);
+
+#创建数据表 ms_finished (成品)
+CREATE TABLE `ms_finished` (
+  finid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT,
+  finid_pic VARCHAR(125)
+);
+INSERT INTO `ms_finished` VALUES 
+(null,1,'http://127.0.0.1:8000/img/app/practive/practiceA-10.jpg'),
+(null,1,'http://127.0.0.1:8000/img/app/practive/practiceA-11.jpg');
+SELECT sp.swiptitle,f.finid_pic FROM ms_finished f INNER JOIN ms_practice p INNER JOIN app_swipe_pic sp ON f.pracid = p.pracid = sp.swipid= 1;
+alter table ms_finished add constraint ms_finished_1
+foreign key(pracid) references ms_practice(pracid);
+
+#创建数据表 ms_skills (成品)
+CREATE TABLE `ms_skills` (
+  skid INT PRIMARY KEY AUTO_INCREMENT,
+  pracid INT,
+  title  VARCHAR(100)
+);
+INSERT INTO `ms_skills` VALUES 
+(NULL,1,'1/  蒸制时间需根据蛋卷的数量和肉馅的多少适度调整'),
+(NULL,1,'2/ 最好用鲜虾来制作虾糜，如果没有也可用超市的冷冻虾仁');
+alter table ms_skills add constraint ms_skills_1
+foreign key(pracid) references ms_practice(pracid);
+
+
+
+
+
+
+
 
 #创建数据表 ms_recipes
 CREATE TABLE `ms_recipes` (
@@ -363,14 +559,22 @@ CREATE TABLE `ms_recipes` (
   `title` VARCHAR(30)
 );
 INSERT INTO `ms_recipes` (`recid`, `point`, `ctime`, `title`) VALUES
-(1, 180, '2018-12-28 20:45:57', '左宗棠鸡的做法'),
-(2, 220, '2018-12-28 20:45:57', '紫薯山药糕的做法'),
-(3, 520, '2018-12-28 20:45:57', '猪油拌饭的做法'),
-(4, 423, '2018-12-28 20:45:57', '猪血汤的做法'),
-(5, 640, '2018-12-28 20:45:57', '猪心汤的做法'),
-(6, 410, '2018-12-28 20:45:57', '猪皮冻的做法'),
-(7, 620, '2018-12-28 20:45:57', '猪肝粥的做法'),
-(8, 10, '2018-12-28 20:45:57', '猪肝面的做法');
+(NULL, 180, '2018-12-28 20:45:57', '左宗棠鸡的做法'),
+(NULL, 220, '2018-12-28 20:45:57', '紫薯山药糕的做法'),
+(NULL, 520, '2018-12-28 20:45:57', '猪油拌饭的做法'),
+(NULL, 423, '2018-12-28 20:45:57', '猪血汤的做法'),
+(NULL, 640, '2018-12-28 20:45:57', '猪心汤的做法'),
+(NULL, 410, '2018-12-28 20:45:57', '猪皮冻的做法'),
+(NULL, 620, '2018-12-28 20:45:57', '猪肝粥的做法'),
+(NULL, 10, '2018-12-28 20:45:57', '猪肝面的做法');
+
+INSERT INTO `ms_recipes` (`recid`, `point`, `ctime`, `title`) VALUES
+(NULL, 180, '2018-10-28 20:35:57', '豆豉鲮鱼的做法'),
+(NULL, 220, '2018-09-28 20:45:57', '鱼头豆腐汤的家常做法'),
+(NULL, 520, '2018-09-28 20:45:57', '梭子蟹怎么做好吃'),
+(NULL, 423, '2018-11-28 20:45:57', '鱼香肉丝的家常做法');
+
+
 
 #创建数据表 ms_recipespic
 CREATE TABLE `ms_recipespic` (
@@ -388,6 +592,12 @@ INSERT INTO `ms_recipespic` (`picid`, `recid`, `pic`,`video`) VALUES
 (NULL, 6, 'http://127.0.0.1:8000/img/app/Videorecipes/recipes-6.jpg','http://127.0.0.1:8000/video/App/recipes6.jpg'),
 (NULL, 7, 'http://127.0.0.1:8000/img/app/Videorecipes/recipes-7.jpg','http://127.0.0.1:8000/video/App/recipes7.jpg'),
 (NULL, 8, 'http://127.0.0.1:8000/img/app/Videorecipes/recipes-8.jpg','http://127.0.0.1:8000/video/App/recipes8.jpg');
+
+INSERT INTO `ms_recipespic` (`picid`, `recid`, `pic`,`video`) VALUES
+(NULL, 9, 'http://127.0.0.1:8000/img/app/Videorecipes/recipesA-1.jpg','http://127.0.0.1:8000/video/App/recipesA1.jpg'),
+(NULL, 10, 'http://127.0.0.1:8000/img/app/Videorecipes/recipesA-2.jpg','http://127.0.0.1:8000/video/App/recipesA2.jpg'),
+(NULL, 11, 'http://127.0.0.1:8000/img/app/Videorecipes/recipesA-3.jpg','http://127.0.0.1:8000/video/App/recipesA3.jpg'),
+(NULL, 12, 'http://127.0.0.1:8000/img/app/Videorecipes/recipesA-4.jpg','http://127.0.0.1:8000/video/App/recipesA4.jpg');
 
 alter table ms_recipespic add constraint recipes1
 foreign key(recid) references ms_recipes(recid);
@@ -450,3 +660,27 @@ INSERT INTO `ms_recipes_practice` (`praid`, `recid`, `practice`) VALUES
 (NULL, 8,'4、食用油5毫升，倒入姜末，猪肝，清水500毫升，鸡粉2克，盐2克，菜心，翻炒均匀'),
 (NULL, 8,'5、清水大火煮沸，面条100克，搅拌均匀'),
 (NULL, 8,'6、捞出面条，倒入汤汁，枸杞10粒，倒入葱末，胡椒粉1克');
+
+
+INSERT INTO `ms_recipes_practice` (`praid`, `recid`, `practice`) VALUES
+(NULL, 9,'1、鲮鱼切片'),
+(NULL, 9,'2、锅中放油，大火烧至七成熟，放入鲮鱼，小火炸至酥脆'),
+(NULL, 9,'3、锅中放油，倒入姜丝，蒜片，大火爆香'),
+(NULL, 9,'4、加入豆豉，翻炒均匀，倒入鲮鱼，翻炒均'),
+
+
+(NULL, 10,'1.豆腐切块，煎至豆腐两面金黄待用'),
+(NULL, 10,'2.汤锅开水放入姜、料酒、鱼头、豆腐'),
+(NULL, 10,'3.小火慢煮20分钟至汤色变白'),
+
+(NULL, 11,'1、香葱切段，准备姜片，蒜片，梭子蟹揭盖，'),
+(NULL, 11,'2、锅中倒入食用油，姜片，葱段，蒜片，花椒，八角，大火翻炒'),
+(NULL, 11,'3、加入生抽，醋，水，倒入梭子蟹，大火'),
+(NULL, 11,'4、加入盐，白砂糖，大火收汁'),
+
+(NULL, 12,'1.葱姜、料酒、水淀粉腌制猪瘦肉'),
+(NULL, 12,'2.调鱼香酱汁'),
+(NULL, 12,'3.锅内热油下葱爆香，放入腌好的肉炒至变色'),
+(NULL, 12,'4.加入鱼香汁，配菜大火翻炒收汁出锅');
+
+

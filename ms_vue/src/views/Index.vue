@@ -729,9 +729,15 @@
       hover12(){
         this.hov4=12;
       },
+      wind(){
+        if(/phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/i.test (navigator.userAgent)){
+          window.location.href='https://www.baidu.com/'
+        }     
+      },
       
     },
     created() {
+      this.wind();
       this.autoPlay();
       this.autoPlay1();
       this.axios.get("http://127.0.0.1:8000/index/item").then(res=>{

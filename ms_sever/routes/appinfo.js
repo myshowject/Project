@@ -19,4 +19,12 @@ const pool = require("../pool");
     })
   })
 
+  router.get("/getInfo",(req,res)=>{
+    var sql = 'SELECT r.recid,r.ctime,r.title,p.pic FROM ms_recipes r INNER JOIN ms_recipespic p on r.recid=p.recid WHERE r.recid BETWEEN 9 AND 12'
+    pool.query(sql,(err,result)=>{
+      if(err) throw err;
+      res.send({code:1,data:result})
+    })
+  })
+
 module.exports = router;

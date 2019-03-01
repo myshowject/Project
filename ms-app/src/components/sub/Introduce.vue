@@ -23,28 +23,14 @@
           </ul>
           <h3>相关视频</h3>
           <ul class="mui-table-view">
-            <li class="mui-table-view-cell mui-media dashed">
-              <a href="javascript:;">
-                <img class="mui-media-object mui-pull-left imgs-2" src="http://127.0.0.1:8000/img\app\Introduce/introduce-1.jpg">
+            <li class="mui-table-view-cell mui-media dashed" v-for="(item,index) in info" :key="item.recid">
+              <router-link :to="'/Videoinfo?id='+item.recid" @click.native="recid(index)">
+                <img class="mui-media-object mui-pull-left imgs-2" :src="item.pic">
                 <div class="mui-media-body">
-                  <h4 class="h4">凉粉的做法视频</h4>
-                  <p class='mui-ellipsis p'>2018-10-22</p>
+                  <h4 class="h4">{{item.title}}</h4>
+                  <p class='mui-ellipsis p'>{{item.ctime | datatimeFilter}}</p>
                 </div>
-              </a>
-              <div class="details">
-                <em class="splistbtn">
-                  <i></i>
-                </em>
-              </div>
-            </li>
-            <li class="mui-table-view-cell mui-media dashed">
-              <a href="javascript:;">
-                <img class="mui-media-object mui-pull-left imgs-2" src="http://127.0.0.1:8000/img\app\Introduce/introduce-1.jpg">
-                <div class="mui-media-body">
-                  <h4 class="h4">凉粉的做法视频</h4>
-                  <p class='mui-ellipsis p'>2018-10-22</p>
-                </div>
-              </a>
+              </router-link>
               <div class="details">
                 <em class="splistbtn">
                   <i></i>
@@ -61,25 +47,38 @@
   export default {
     data() {
       return {
-        list:[]
-        
+        list:[],
+        info:[], 
       }
     },
     methods: {
+      recid(index){
+        var id = this.info[index].recid;
+        sessionStorage.setItem("id",id);
+      },
       getPractice(){
-        var recid = this.id;
+        var recid = sessionStorage.getItem("id");
         var url = `http://127.0.0.1:8000/appinfo/getPractice?recid=${recid}`;
         this.axios.get(url).then(res=>{
           this.list =res.data.data;
-          // console.log(res.data.data)
         })
-      }
+      },
+      getNewsInfo(){
+        var url = `http://127.0.0.1:8000/appinfo/getInfo` 
+        this.axios.get(url).then(res=>{
+          this.info = res.data.data;
+        })
+      },
     },
     created() {
+      // console.log(this.id)
       this.getPractice();
-      
+      this.getNewsInfo();
     },
-    props:["id"]
+    // props:["id"],
+    watch: {
+      "$route":'getPractice'   
+    },
   }
 </script>
 
